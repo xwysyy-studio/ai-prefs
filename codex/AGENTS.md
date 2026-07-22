@@ -36,7 +36,7 @@ After mutating:
 4. If no Git repository exists, report the backup path or other rollback method.
 
 ## 3. Minimal Build & Clean Rewrite
-<!-- 精简改编版，不随源逐条同步。权威全文：~/.claude/rules/dev-core.md（动手前 / 编码克制 / 写完后 / 进程管理 / 并发执行 / API 脚本规范 / subagent 分发完整清单）。改那边即可；仅当下方核心条目增删时更新本节。 -->
+<!-- 精简改编版，不随源逐条同步。权威全文：~/.claude/rules/dev-core.md（动手前 / 编码克制 / 写完后 / 进程管理 / 并发执行 / API 脚本规范 / subagent 分发与交回契约完整清单）。改那边即可；仅当下方核心条目增删时更新本节。 -->
 Before non-trivial development work, read `~/.claude/rules/dev-core.md` and apply it in full; on conflict that file wins. The core below is always in effect even without reading it.
 
 Default posture: the user's repos are personal research code and self-use tools. Working is enough; product-grade robustness is not a goal unless the user names it.
@@ -135,4 +135,5 @@ Before producing any substantial prose (report sections, README narrative, paper
 ## 12. Reporting
 - Be concise and concrete.
 - Final answers should state what changed, how it was verified (at the consumer boundary when applicable), what was not changed, and residual risk. When a goal cannot be fully machine-verified, say "mechanically verified up to X; Y needs your judgment" instead of implying full coverage.
+- When handing work back (delegated task, subagent result), include a status block per `~/.claude/references/codex-task-template.md` §9: `STATUS:` (DONE / DONE_WITH_CONCERNS / PARTIAL / BLOCKED / NEEDS_INPUT) + `EVIDENCE:` (verification command output / result summary). List verified facts and unverified assumptions separately; run the applicable self-checks before reporting DONE. The consumer re-checks by EVIDENCE, not by the PASS self-assessment.
 - Do not end by asking generic follow-up questions. Offer specific next steps only when they build directly on the request.

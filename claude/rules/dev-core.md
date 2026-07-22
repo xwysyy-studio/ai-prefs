@@ -58,6 +58,11 @@
 - 子 agent 遇 401 / 403 / 503：等 30s 重试 1 次，仍失败报告等指示
 - 大仓库调查类 subagent（investigator 等）超过 2 分钟主动中止并分段执行
 
+### 交回契约（通用 Task subagent 与 Codex 委派同一套语言）
+- 会写文件的子任务，prompt 里指定用宿主已有的验证器（测试 / 构建 / 脚本命令，没有就指定最小检查命令）；子 agent 交回前先自跑一遍 §写完后 清单，验证不过不得报 DONE
+- 交回摘要必带状态块，词汇同 `references/codex-task-template.md` §9：`STATUS:`（DONE / DONE_WITH_CONCERNS / PARTIAL / BLOCKED / NEEDS_INPUT）+ `EVIDENCE:`（验证命令输出 / 结果摘要）；已验证事实与未验证假设分开列，假设不得伪装成事实
+- 父会话是交回物的消费者（`rules/verification.md` 原则 1）：不采信 PASS 自评，按 EVIDENCE 复核。带可信 EVIDENCE 的交回，复核降级为抽验关键结果 + 整体一致性；无 EVIDENCE 的交回按未验证处理，打回或亲自重验
+
 ## Codex 调用铁律
 - 任何 Codex 调用前先读 `references/codex-delegation.md`：模型路由、写模式门槛、审查隔离、失败处理的唯一权威
 - 底线：只用插件命令，禁止直接 `codex exec`；显式 `--model gpt-5.6-sol`（rescue 加 `--effort max`），禁止降级；前台执行，禁止 background；失败不静默 fallback
