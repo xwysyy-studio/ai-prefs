@@ -1,0 +1,63 @@
+# Dev Core（开发高频纪律）
+
+> 自动适用于所有代码改动。
+> 下游消费点：`~/.codex/AGENTS.md` §3 / §4 / §6（精简改编版 + 指针）。本文件是唯一权威，改动无需逐条同步；仅当核心条目增删时更新对应节。
+
+## 动手前
+- 相关文件 / 现有模式 / 项目惯例读了吗？同类问题先 Grep 有没有已解决的
+- 装了 repo-state 协议的仓库（存在 `scripts/docctl.py`）：开工先 `python3 scripts/docctl.py context <路径/关键词>` 组装阅读清单；state 文档是现状权威，process 记录只当历史快照（协议细节见 `repo-state` skill）
+- 有基线测试 / 构建命令，先跑一遍确认现状
+- 新增行为默认 test-first：先写 failing test 亲眼看它红，再实现到绿；bug 修复的回归测试在 fix 前写并确认失败。从未红过的测试不可信
+- 测试断言行为、只走 public interface；内部重构导致测试挂 = 测的是实现，重写测试（深度参考 `tdd` skill）
+- 新建 API / service / utility 前先停靠，到第一层成立就停：本仓库已有 → 语言标准库 / 工具原生 → 已装依赖 → 都没有才新写；能复用不扩展，能扩展不新建，新建要写清为什么旧的不够用
+- 修改被多处依赖的代码前 grep 调用方和 import 路径；破坏性改动（改签名 / 改返回值 / 删方法）列出受影响调用方等确认
+- 修 bug 先 grep 该函数全部调用方：护栏加在共享函数一处，不逐个调用点贴补丁；只修工单点名的路径会漏掉兄弟调用方
+- ≥3 文件或 >15 分钟工作量 → 先出方案（2-3 句）等确认；有回滚风险先记 baseline sha
+- 不熟的工具（CLI / API）先读 `--help` 或 doc，不猜命令和 flag。HuggingFace CLI 前缀是 `hf`（不是 `huggingface-cli`）
+
+## 编码克制（写代码的当下，不是事后补救）
+> §4 最简方案落到敲下每一行：看到自己要写下面这些词，先停一下过判据再写。
+> 触发词：try / except / fallback / default / interface / adapter / factory / provider / strategy / registry / 泛型 / config / option / 开关 / validate / guard / lock / 防御性分支
+
+- **不预先抽象**：不到两个语义相同的真实调用点，不抽函数 / 类 / 接口 / adapter / factory / strategy；宁可留一点重复。不为想象中的未来加扩展点（可选模式 / 插件 hook / 没用上的参数 / 配置开关），除非当前任务真的用到。
+- **不静默兜底**：错误优先抛到能处理的层。不 try/except 吞掉再返回默认 / 空值 / 静默续跑，除非兜底是明确产品需求且调用方能观察到它发生过。请求失败后不偷偷换模型 / provider / URL / 解析器，除非是有界重试的已知瞬时故障；否则报告失败。
+- **不层层设防**：校验只在信任边界（外部输入 / 网络 / 持久化 / 安全 / 并发）做一次。内部函数假设调用方守约，不重复 null 检查、normalize、"不可能发生"分支，不加未用的锁 / 状态位 / 防御性拷贝，除非防的是数据丢失 / 凭据泄露 / 注入 / 越权 / 竞争这类具体高影响失败。
+- **理由词红旗**：一段代码唯一的理由若是"更安全 / 更健壮 / 更灵活 / 未来可能 / 防御性 / 为兼容"，却指不出当前在失败的例子、外部边界或用户需求 → 删。
+
+判据（区分必要脚手架与过度工程）：让程序**停下 / 验证 / 报告 / 大声失败**的护栏，留；让程序**静默续跑 / 多接受一种模式 / 多暴露一个开关 / 藏掉错误 / 伺候想象中调用方**的护栏，砍。
+
+## 写完后
+- 相关脚本 / 构建 / 测试跑过了吗？退出码确认了吗？对外交付物按 `rules/verification.md` 验收
+- 残留 debug 语句（print / console.log / debugger）清了吗？
+- 过度工程扫描：扫 diff 新增行里的 try / except / fallback / 新抽象（interface / adapter / factory / strategy）/ config / 开关 / validate / 防御性分支，每处命中都要指得出当前在失败的例子、外部边界或用户需求，指不出 → 撤回
+- 外部审查（Codex / GPT）返回的加固建议按同一判据过滤：指不出本仓库真实用法中失败场景的新增防护默认不采纳，记一句不采纳理由
+- 涉及安全 / 权限 / 支付 / 并发的改动：输入校验、权限层级、异常路径、边界条件（空值 / 溢出 / 竞争）过一遍
+- commit message 用 Conventional Commits 前缀：`<type>[scope]: <描述>`，type 取 feat / fix / docs / chore / refactor / test 等，破坏性改动在 type 后加 `!`；描述中英文均可；repo-state 的 `[doc-ack:]` 等标记放 footer 位置
+
+## 进程管理
+- 停 dev server / 预览进程时禁止宽匹配 `pkill` / `killall`：先 `pgrep -f` 列出匹配确认，再 kill 精确 PID（宽匹配曾误杀 MCP server 和自身进程）
+- Bash 搜索优先 `rg` 并限定路径 / 文件类型；禁止对大目录树跑宽通配 `grep` / `ugrep`（曾 OOM 弄崩整个 WSL2）；能用原生 Grep 工具就不开 shell 搜索
+
+## 并发执行
+三条同时满足 → 默认并发，禁止逐个串行：
+1. 批量同构：对一组对象（多题 / 多 URL / 多文件 / 多请求）重复同一种处理
+2. 单元无依赖：第 N 个不需要第 N-1 个的输出
+3. 外部等待主导：耗时主要在网络 / 远程模型 / API 响应
+
+先按速率约束（读文档 / 已知 rate limit / 轻量试探）定并发度 + 退避；命中限流降并发加退避，不退回串行。真实依赖 / 写同一资源 / 纯本地计算 → 串行合理。
+
+## API 脚本规范（写脚本默认包含）
+- 认证预检：开头验证 key 存在且格式合理，失败明确报错退出
+- 重试：429 / 5xx 指数退避最多 3 次；401 / 403 立即报错不重试；HTTP 超时默认 30s
+- 交互式会话中失败阶梯：先按 `rules/verification.md` 用最小够用标签给非通过结果归因，再走阶梯；第 1 次失败重试 1 次；第 2 次换**根本不同**的路径（不是调参 / 改措辞）并告知用户；第 3 次失败 → 停，给已验证事实 + 已排除假设 + 选项 + 推荐；`bug-detective` 卡住升级节（原 pua-debugging 并入）的 L3/L4 压力档仅在用户对该停点回复"继续 / try harder"后解锁
+
+## Subagent 分发
+- 每个 prompt 自含全部上下文：任务、输出路径、命名规范、格式、约束、参考文件；不假设子 agent 知道主 agent 的约束
+- 必带 git 安全（"Do NOT commit, push, or run destructive git commands"）+ 自主权边界（默认"可修有证据的 bug 并记录，不得扩 scope / 顺手重构"；只读任务声明 READ_ONLY）
+- 同时 dispatch ≤3 个；每个限定只读指定文件、只返回摘要，禁止把源文件全量拉回父上下文
+- 子 agent 遇 401 / 403 / 503：等 30s 重试 1 次，仍失败报告等指示
+- 大仓库调查类 subagent（investigator 等）超过 2 分钟主动中止并分段执行
+
+## Codex 调用铁律
+- 任何 Codex 调用前先读 `references/codex-delegation.md`：模型路由、写模式门槛、审查隔离、失败处理的唯一权威
+- 底线：只用插件命令，禁止直接 `codex exec`；显式 `--model gpt-5.6-sol`（rescue 加 `--effort max`），禁止降级；前台执行，禁止 background；失败不静默 fallback

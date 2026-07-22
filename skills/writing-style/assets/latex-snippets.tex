@@ -1,0 +1,81 @@
+% LaTeX snippets for ICML-style papers (adapt to your project).
+% Keep macros in macro.tex; keep this file as copy/paste snippets.
+
+% ----------------------------
+% Contribution paragraph
+% ----------------------------
+% \paragraph{Contribution \#1: <short title>.}
+% <2–4 sentences describing what it is and why it matters.>
+
+% ----------------------------
+% Figure (single-column)
+% ----------------------------
+% \begin{figure}[t]
+%   \centering
+%   \includegraphics[width=0.95\linewidth]{imgs/<figure>.pdf}
+%   \caption{<Self-contained caption: what, why, what to notice.>}
+%   \label{fig:<name>}
+% \end{figure}
+
+% ----------------------------
+% Figure* (full-width overview)
+% ----------------------------
+% \begin{figure*}[t]
+%   \centering
+%   \includegraphics[width=0.95\textwidth]{imgs/<overview>.pdf}
+%   \caption{<Overview caption; refer to appendix for details if needed.>}
+%   \label{fig:overview}
+% \end{figure*}
+
+% ----------------------------
+% Table* with external tabular
+% ----------------------------
+% \begin{table*}[t]
+%   \centering
+%   \caption{<Caption above the table.>}
+%   \label{tab:<name>}
+%   \resizebox{0.98\textwidth}{!}{\input{tables/<file>}}
+% \end{table*}
+
+% ----------------------------
+% Equation definition
+% ----------------------------
+% \begin{equation}\label{eq:<name>}
+%   f(x) \triangleq \frac{\langle S, W \rangle_\mathrm{F}}{Z}.
+% \end{equation}
+% where ... (define all symbols).
+
+% ----------------------------
+% Definition environment
+% ----------------------------
+% \begin{definition}\label{def:<name>}
+% <Definition statement.>
+% \end{definition}
+
+% ----------------------------
+% Epigraph (opening quote)
+% ----------------------------
+% \usepackage{epigraph}  % in preamble
+% \epigraph{\emph{<Quote text.>}}{\textit{<Source>}, <Author>}
+
+% ----------------------------
+% Color emphasis in text
+% ----------------------------
+% \textbf{\textcolor{blue}{time}} and \textbf{\textcolor{purple}{space}}
+
+% ----------------------------
+% Table with color highlighting
+% ----------------------------
+% \usepackage{colortbl}
+% \usepackage[table]{xcolor}
+% \cellcolor{gray!20}  % for worst result
+% \underline{\textbf{0.95}}  % for best result
+
+% ----------------------------
+% Appendix setup
+% ----------------------------
+% \newpage
+% \appendix
+% \onecolumn
+% \input{6-appendix}
+
