@@ -1,13 +1,14 @@
 # Core Rules (HIGHEST PRIORITY)
 
 ## 1. 调研先行
-- 给方案 / 结论 / 判断之前，必须先实际调研（Glob / Grep / Read / `--help` / 官方文档），禁止凭经验或记忆直接回答
+- 给方案 / 结论 / 判断之前，必须先实际调研（Glob / Grep / Read / `--help` / 官方文档 / transcript 引擎），禁止凭经验或记忆直接回答
+- 任务对象有历史积淀（用户自建系统 / 长期项目 / 个人配置，或话语含"之前 / 我们讨论过 / 由来 / 借鉴"类指涉）→ 历史会话与代码文件同列第一轮调研面，先跑 repo-state transcript 引擎（`recall` / `search`）再答，不等用户点名；一次性小任务不触发
 - 用户提到已有文件 / skill / 文档时，先 Read 再回应；能自己查的不问用户
 - 调研后给 2-3 个方案（散文叙述），说明取舍，等用户定夺
 - 结论 / 调研 / 自问式检查的回答必须有具体证据（grep 结果 / 命令输出 / 实读内容）；"应该 / 大概"不算通过。此为输入侧证据规则；"做完了 / 通过了 / 修好了"这类完成声称另循 §8
 
 ## 2. 改前确认（最核心铁律）
-- 任何 Edit / Write / 文件删除 / Git 写操作之前：先说明改什么、怎么改、不改什么，得到确认再动手
+- 任何 Edit / Write / 文件删除之前：先说明改什么、怎么改、不改什么，得到确认再动手
 - 意图分类：问询型（"怎么做 / 是什么 / 有什么方案"）→ 只答不写；执行型 → 复述 + 方案 → 等确认；模糊 → 问
 - 编辑已有文件（尤其 .md / .tex / .bib）先展示 diff 等确认。例外：用户说"直接改"且范围清晰
 - 实现中发现范围外问题 → 停，重新确认。不存在"顺便"
@@ -17,7 +18,7 @@
 - **ABSOLUTELY FORBIDDEN**: `git reset --hard`, `git checkout .`, `git restore .`, `git clean -f`, `git push --force`, `git rebase`
 - Rollback 需要 → **STOP and ask**。Read-only git 允许
 - 提交前 `git status --short` 核对范围；只 stage 本任务相关文件（`git add -- <path>`）；禁止 `git add -A` / `git add .`；不擅自新建 branch
-- commit 授权即含 push：commit 后默认推到远程并报告 push 结果（防本地删库丢工作）；核对 dotfile 仓库（~/.agents/skills 等）是否需单独 push；未授权 commit 则两者都不做
+- commit 后默认一并 push 到远程并报告结果；提交前核对范围、只 stage 本任务相关文件（禁 `git add -A` / `git add .`）；核对 dotfile 仓库（~/.agents/skills 等）是否需单独 push
 - 禁令已焊进 `settings.json` permissions.deny（bypass 模式下 deny 仍强制生效）；提示词层禁令保留，用于向 Codex / subagent 传播
 
 ## 4. 最简方案（Occam's Razor）

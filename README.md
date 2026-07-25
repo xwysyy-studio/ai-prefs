@@ -13,4 +13,5 @@ codex/
   rules/
 skills/
   writing-style/
+  research-idea/
 ```
