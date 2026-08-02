@@ -83,18 +83,14 @@ When reviewing text for voice contamination:
    - 0-1: Clean (no action needed)
    - 2-3: Light contamination (local fixes)
    - 4+: Heavy contamination (paragraph rewrite recommended)
-4. **Fix**: Apply the corresponding fix from the table; prefer deletion over replacement
+4. **Fix**: Apply the corresponding fix from the table. Deletion is for zero-information filler only; a sentence that carries real content gets re-shaped, not removed (information conservation, see writing-style `SKILL.md` 全局守卫)
 
 ## Integration Points
 
-### writing-style (style-apply mode)
-- Apply this contract during `references/style-apply.md` Workflow B (rewrite) and Workflow D (final polish)
-- Use the diagnosis protocol as a pre-check before style application
-
-### writing-style (humanize mode)
-- This contract extends the humanize mode's existing pattern detection
+### writing-style（英文层）
+- Apply this contract during `references/style-apply.md` Workflow B (rewrite), Workflow D (final polish), and all de-AI passes
 - Categories 1-4 and 7 are primary targets; Categories 5-6 are secondary
-- In LaTeX Mode, preserve all \cite{}, \ref{}, and environments while fixing voice
+- Use the diagnosis protocol as a pre-check before style application; preserve all \cite{}, \ref{}, and non-prose environments while fixing voice (see style-apply.md Preservation Rules)
 
 ## Voice Quality Gate
 

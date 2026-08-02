@@ -1,6 +1,6 @@
 # Academic Writing Rules
 
-> 审稿 / 编辑 / 写作论文时生效。Codex 侧经 `~/.codex/AGENTS.md` §9 指针读本文件；本文件是唯一权威。
+> 审稿 / 编辑 / 写作论文时生效。Codex 侧经 `~/.codex/AGENTS.md` §4 指针读本文件；本文件是唯一权威。
 
 ## 审稿与编辑
 - 审稿 / 编辑前完整读所有相关文件，段落级批判带 file:line 引用，不做浅审；不做未验证 claim，不确定就明说

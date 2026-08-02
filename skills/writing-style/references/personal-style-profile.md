@@ -8,6 +8,7 @@
 - Use **confident but bounded** language:
   - Strong: “Our results demonstrate …”
   - Bounded: “suggest”, “indicate”, “in our setting”, “under the following assumptions”
+- Position the paper positively: state what the work studies, proposes, measures, and contributes. When comparing related work, name the prior work's concrete coverage or gap first; never seed an unraised objection or negate a possible claim about the present work.
 - Use `\emph{...}` to emphasize **one key phrase**, not to decorate.
 - **Lecture-style flow**: sentence-initial connectives used freely and densely (However / Moreover / Further / Thus / Instead / Finally), plus conversational moves: “A natural next question is …”, “Note that …”, “Recall that …”, “We remark that …”, “Consider an example …”. This chattiness is the house voice; do not strip it toward cold nominalized prose.
 - An interrogative research question that names the open problem is a legitimate device (“Can we … using fully synthetic data?”); only writing-plan announcements are banned.
@@ -40,14 +41,8 @@ The abstract is:
 
 - Single paragraph
 - Many short sentences (each “does one job”)
-- Contains:
-  - Context
-  - Prior work summary (very brief)
-  - Gap statement
-  - What you introduce
-  - What’s inside the artifact (scale + properties)
-  - How you evaluate
-  - Main conclusion (qualitative and/or quantitative)
+- Built around one load-bearing sentence, the line that changes the reader's understanding; the arc follows the paper's story (see `abstract-playbook.md`, English Abstract section)
+- The usual supporting jobs: context, brief prior-work summary, gap statement, what you introduce, what’s inside the artifact (scale + properties), how you evaluate, main conclusion (qualitative and/or quantitative)
 
 ## 5) Experiments: “primary findings” + bullets
 
@@ -92,9 +87,7 @@ Absorbed from related work (validated in accepted papers):
 
 - “This leaves a clear void for …” (related-work gap closer)
 - “We revisit this claim …” (re-evaluation framing)
-- “This setup is intentionally more challenging, yet more aligned with real-world practices” (turn a design cost into a virtue)
-- “We use the term X rather than Y because …” (terminology justification, a group habit)
-- “… acts as a feasibility constraint rather than a component of the scoring metric” (one sentence defining what is NOT measured)
+- “We use the term X to denote …” (positive terminology definition)
+- “X acts as a feasibility constraint; the scoring metric measures Y” (positive separation of roles)
 
 Avoid overusing any single phrase; treat these as patterns.
-

@@ -1,19 +1,19 @@
 # Long-Form Humanize（长文本去 AI 味工作流）
 
-**This file is a companion to `humanize.md`.** 长文本（>~8000 中文字符 / >~12000 英文字符）、多节目录文档或跨会话续写场景加载本文件。短 snippet（<2000 字符）继续走 `humanize.md`。
+**This file is a companion to the language layers (`SKILL.md`).** 长文本（>~8000 中文字符 / >~12000 英文字符）、多节目录文档或跨会话续写场景加载本文件。短 snippet（<2000 字符）继续走所在语言层的常规工作流。
 
 本文件提供三样东西：
 1. **跨会话轮次状态持久化**（state manifest）
 2. **硬分块 + 段落结构还原**（chunking + reassembly）
 3. **扩展评分维度**（5×10 core + 2×10 long-form add-on）
 
-**不**做的事：不新增 de-AI 模式清单（仍以 `humanize.md`、`patterns-chinese.md`、`patterns-english.md`、`paper-voice-contract.md` 为准）；不调用任何模型 API；不执行脚本；不做章节级 playbook（中文毕设格式见 `revision-checklist.md`）。
+**不**做的事：不新增 de-AI 模式清单（仍以 `patterns-chinese.md`、`patterns-english.md`、`paper-voice-contract.md` 为准）；不调用任何模型 API；不执行脚本；不做章节级 playbook。
 
 ---
 
 ## §1 Purpose & Scope
 
-现有 `humanize.md` 按"一次对话改完"设计，对长稿会遇到三类问题：
+语言层的常规工作流按"一次对话改完"设计，对长稿会遇到三类问题：
 - 单次 context 不足以装下整篇，导致截断或中途漂移
 - 无法跨会话续写（新开一个对话就要从头读）
 - 段落结构/编号/引用在大范围改写中容易错位
@@ -29,9 +29,9 @@
 - 文档总字符 > 8000（中文）或 > 12000（英文）
 - 文档含多节目录（≥3 个 `#` / `##` / `1.1` 这类编号层级）
 - 用户明确要求跨会话续写（如"继续上次的 humanize"/"按记录接着改"）
-- 输入提及"长稿"/"毕设"/"thesis"/"全文"/"整篇"/"long-form"/"multi-session"
+- 输入提及"长稿"/"全文"/"整篇"/"long-form"/"multi-session"
 
-**不加载**（应直接用 `humanize.md`）：
+**不加载**（应直接用所在语言层的常规工作流）：
 
 - 单段或短 snippet（< 2000 字符）
 - 用户只要风格指导，不要改写产物
@@ -182,18 +182,18 @@ REASSEMBLE(改写后的 chunks[]):
 
 ## §5 Pass Ordering
 
-默认**两轮 focused pass，两轮都做减法**。这是本工作流与 baibaiAIGC 等"对抗检测器"类工具的核心区别——后者第 1 轮做加法（刻意冗长化），第 2 轮做减法；本流程两轮都是清除 AI 痕迹。
+默认**两轮 focused pass**。与 baibaiAIGC 等"对抗检测器"类工具（第 1 轮刻意冗长化、第 2 轮删）不同，本流程两轮都以清除 AI 痕迹为目标，且都受信息守恒守卫约束（见 `SKILL.md` 全局守卫）：删除只针对零信息模式，不以字数减少为目标。
 
 ### Round 1 — Surface Pass（词句级）
 
-- **依据**：`patterns-english.md` 的 25 个 de-AI 模式（英文）/ `patterns-chinese.md` 的 20 个模式 + 中文学术增强 4 层策略（中文）
+- **依据**：`patterns-english.md` 全目录（英文）/ `patterns-chinese.md` 全目录 + `chinese-writing.md` 总判据（中文）
 - **处理目标**：模板开头、hedge stacking、list addiction、rhythm monotony、破折号滥用、AI 高频词、三段式列举、刻意换词等**词句级**机械化
 - **不处理**：篇章级 voice（R2 的事）
 
-### Round 2 — Voice-Contract Pass（篇章级）
+### Round 2 — Voice-Contract Pass（篇章级，按语言选材料）
 
-- **依据**：`paper-voice-contract.md` Categories 1-7
-- **处理目标**：R1 未清除的篇章级机器味：Planner Talk、Template Stems 残留、Hedge Stacking 深层堆叠、Symmetry Addiction、Citation Contamination、Grandiose Framing、Syntactic Over-Elaboration（分词解读尾、抽象名词主语）
+- **英文依据**：`paper-voice-contract.md` Categories 1-7。处理目标：R1 未清除的篇章级机器味：Planner Talk、Template Stems 残留、Hedge Stacking 深层堆叠、Symmetry Addiction、Citation Contamination、Grandiose Framing、Syntactic Over-Elaboration（分词解读尾、抽象名词主语）
+- **中文依据**：`chinese-writing.md` 总判据 + `~/.claude/rules/writing-tone.md` 句式/段落级。处理目标：结构性重复、评价性收束残留、幽灵信息、假逻辑连接词、段落主题混杂。中文长文不加载英文 voice contract
 
 ### Override
 
@@ -225,7 +225,7 @@ REASSEMBLE(改写后的 chunks[]):
 
 ### 5+2 独立计分
 
-**Core**（来自 `humanize.md` § Quick Scoring，不修改原定义）：
+**Core**（定义在本文件，唯一权威）：
 
 | 维度 | 问题 | 范围 |
 |------|------|------|
@@ -233,7 +233,7 @@ REASSEMBLE(改写后的 chunks[]):
 | Rhythm | 节奏变化还是机械重复？ | /10 |
 | Trust | 尊重读者智慧吗？ | /10 |
 | Authenticity | 听起来像真人吗？ | /10 |
-| Density | 有可删减的内容吗？ | /10 |
+| Density | 零信息套话是否清除？（不以字数减少计分，信息守恒由"语义保真"把关） | /10 |
 
 **Long-form Add-on**（本文件新增）：
 
@@ -263,7 +263,7 @@ Round total: (X+Y) / 70
 
 ### 向后兼容
 
-短文本（本文件不加载）继续用 5×10=50 评分；**不**在普通 humanize 调用中引入 /70，避免污染现有 UX。
+短文本（本文件不加载）继续用 5×10=50 评分；**不**在普通短文调用中引入 /70，避免污染现有 UX。
 
 ---
 
@@ -303,11 +303,10 @@ Round total: (X+Y) / 70
 |---------|-------|
 | 英文 de-AI 模式清单 | `patterns-english.md` |
 | 中文 de-AI 模式清单 | `patterns-chinese.md` |
-| 中文学术增强 4 层策略 | `patterns-chinese.md` § 中文学术降 AI 增强模式 |
+| 中文总判据与工作流 | `chinese-writing.md` |
 | Voice 反模式 7 类 | `paper-voice-contract.md` |
-| LaTeX 学术安全规则 | `humanize.md` § LaTeX Mode |
-| 中文学位论文结构规范 | `revision-checklist.md` |
-| Core 5×10 评分原定义 | `humanize.md` § Quick Scoring |
+| LaTeX 学术安全规则 | `style-apply.md` § De-AI in academic LaTeX |
+| Core 5×10 评分定义 | 本文件 §7 |
 
 ---
 

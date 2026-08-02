@@ -1,6 +1,14 @@
 # English AI Writing Patterns - Complete Reference
 
-英文 AI 写作模式的唯一完整目录（humanize 工作流按输入语言加载本文件或 `patterns-chinese.md`）。
+英文 AI 写作模式的唯一完整目录（英文层的 de-AI 目录；中文层用 `patterns-chinese.md`）。
+
+## Usage criteria (read first)
+
+This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is encyclopedia prose. Every "After" below is shorter than its "Before", but brevity is a side effect, not the goal: these rewrites delete zero-information filler and replace vague wording with concrete facts. Three guards:
+
+- Information conservation precedes pattern matching: if deleting a sentence would leave the reader knowing less, it is not filler. Rewriting direction is "swap in the specific" or "delete the zero-information", never "make it shorter".
+- The "swap vague for specific" moves in these examples are legal only when the concrete fact already exists in the source or context. Never invent facts; with nothing to swap in, keep the information and only adjust the wording.
+- In technical and academic prose, explanatory sentences carry causal reasoning. A sentence that matches a pattern's surface form but carries real information gets re-shaped, not removed.
 
 ## CONTENT PATTERNS (内容模式)
 
@@ -292,6 +300,48 @@
 
 **After**:
 > The API gateway routes each request to the matching service and rejects ones that fail authentication.
+
+---
+
+### 26. Staccato Drama Sentences (连续短句制造戏剧感)
+
+**Watch for**: three or more consecutive clipped sentences, often an elliptical run like "No symmetry. No priors. No mercy."
+
+**Problem**: one short sentence emphasizes a point; a run of them turns ordinary information into trailer narration without adding content.
+
+**Before**:
+> Then AlphaEvolve arrived. No symmetry preference. No aesthetic priors. The old rules stopped working.
+
+**After**:
+> AlphaEvolve has no preference for symmetry or human aesthetics, so the old rules no longer fully apply.
+
+---
+
+### 27. Aphorism Formulas (格言金句公式)
+
+**Watch for**: "X is the language/currency of Y", "X is not a tool but a mirror", "the real substrate of X is Y", "X becomes a trap".
+
+**Problem**: dresses an ordinary claim as a quotable maxim; the posture rises while precision does not.
+
+**Before**:
+> Symmetry is the language of trust. Optimize processes too hard and efficiency becomes a trap.
+
+**After**:
+> Symmetric layouts usually feel more predictable to users. Teams that over-optimize processes tend to overlook how people actually work.
+
+---
+
+### 28. Fake-Candor Openers (假装坦率开场)
+
+**Watch for**: "Honestly?", "Let me be real", "Here's the thing", "To be blunt" used as a beat of manufactured candor before an ordinary answer.
+
+**Problem**: the opener promises a revelation, then delivers a mundane claim. Natural conversational use is fine; the fixed opener-then-shrug formula is the tell.
+
+**Before**:
+> Is it worth the price? Honestly? It depends on how often you use it.
+
+**After**:
+> Whether it is worth the price depends on how often you use it.
 
 ---
 

@@ -1,8 +1,8 @@
 # Related-work writing notes（相关工作写作学习笔记）
 
-吸收循环的入口，全 skill 只维护这一个学习笔记，不按领域另建档案。用法：写新论文前，读 3-5 篇同类中稿论文，把学到的写作思路记成一个条目，写作时模仿；论文完稿后，把值得长期保留的措辞与手法蒸馏进 `personal-style-profile.md`，本文件对应条目压缩或清理。
+吸收循环的入口，全 skill 只维护这一个学习笔记，不按领域另建档案。用法：写新论文前，读 3-5 篇同类中稿论文，先提炼每篇赖以成立的核心写作动作（它重新定义了什么对象、提出了什么能力问题、把哪个争论变成了可测问题），以及这个动作成立所需的贡献形态和证据条件；把自己的 running example 放进这个动作里走一遍，走得通才记成条目、写作时模仿，走不通就记下缺的前提，留作判断力。论文完稿后，跨 paper type 稳定成立的 voice、节奏与 claim 分寸蒸馏进 `personal-style-profile.md`；只对某类 story 成立的动作留在本文件，连同它的适用条件，条目适时压缩或清理。
 
-每个条目记三样东西：**故事骨架**（这一子领域怎么讲故事）、**修辞动作**（关键段落怎么写、防什么质疑）、**可借鉴表述**（例句加上它完成的修辞工作）。例句一律自包含，可直接当模板改写，不依赖读过原论文。
+每个条目记三样东西：**故事骨架**（这一子领域怎么讲故事）、**修辞动作**（关键段落怎么写、防什么质疑、成立的前提）、**可借鉴表述**（例句加上它完成的修辞工作）。例句一律自包含，可直接当模板改写，不依赖读过原论文。
 
 ## 出题合成（problem synthesis）子领域（2026-07 为交互算法题合成项目调研，四篇同类论文：三篇正面参考，一篇反面教材）
 
@@ -42,4 +42,4 @@
 - "the apparent difficulty of a problem drops sharply / collapses / evaporates"（同一概念换用生动动词，不重复 decreases）
 - "often generating confidently incorrect justifications"（紧凑可记的失败模式命名）
 - "both the human expert and the model produce valid packings, but the human achieves 87% density while the model achieves only 47%."（一个贯穿全文的 running example 用两个数字把 gap 演出来）
-- Finding 可以直接做小节标题（"Misleading Micro-Optimization Trap"）；发现命名要陈述结果，别起品牌名（反例："Good-gets-Better Principle" 是营销标签不是结论）
+- Finding 可以直接做小节标题（"Misleading Micro-Optimization Trap"）；发现命名要陈述结果，别起品牌名（反例："Good-gets-Better Principle"）
