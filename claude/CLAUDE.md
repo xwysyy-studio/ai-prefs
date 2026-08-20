@@ -38,7 +38,7 @@
 | skill-router 维护 | `hooks/docs/` |
 | 查历史会话 / 用户过往判断与决策（跨项目、跨 Claude/Codex） | repo-state 会话历史引擎：`python3 ~/.claude/skills/repo-state/scripts/transcriptctl.py`（search / query-python --trusted） |
 
-搜索工具：学术论文 → ai4scholar.net（主，Bash curl，config `~/.agents/configs/ai4scholar.json`）/ DBLP·CrossRef·arXiv 兜底 + `paper-note-generator`；网页 / 新闻抓取 → firecrawl MCP 工具（`mcp__firecrawl-mcp__*`）；快速事实核查 → WebSearch 定位权威来源后读原页，search 摘要不单独作为证据；GitHub 一律 `gh` CLI；`browser-use` 只用于需要交互、登录或会话状态、浏览器布局或截图的场景，公开页面依赖 JavaScript 渲染不构成启动浏览器的理由（scrape 自己会渲染），普通资料检索不经本地浏览器的搜索引擎（实测被地域重定向到国内版引擎并返回 SEO 内容农场）。
+搜索工具：学术论文 → ai4scholar.net（主，Bash curl，config `~/.agents/configs/ai4scholar.json`）/ DBLP·CrossRef·arXiv 兜底 + `paper-note-generator`；公开网页发现、新闻检索、已知 URL 正文抓取、多来源调研（`--source` 按任务选通道并行：web/news/知乎官方 CLI/小红书与推特登录态浏览器）优先使用 `find-and-fetch` skill，内置 WebSearch 仍可按任务选择；快速事实核查先定位权威来源再取原页，search 摘要不单独作为证据；GitHub 一律 `gh` CLI；`browser-use` 只用于需要交互、登录或会话状态、浏览器布局或截图的场景，公开页面依赖 JavaScript 渲染不构成启动浏览器的理由，普通资料检索不经本地浏览器的搜索引擎（实测被地域重定向到国内版引擎并返回 SEO 内容农场）。
 
 # Project Context
 

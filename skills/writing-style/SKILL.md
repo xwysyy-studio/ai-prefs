@@ -1,12 +1,13 @@
 ---
 name: writing-style
-version: 2.0.0
+version: 2.0.1
 description: |
   Unified writing style engine with 2 language layers: chinese (中文写作) and
   english (English academic + general writing). De-AI, polish, and voice
   consistency are tasks inside a layer, not separately routed modes.
-  **Trigger**: 中文写作, 中文润色, 去AI味, 去机器味, AI写作痕迹, humanize, de-AI,
-  make it sound human, 润色风格, 英文写作, house style, writing style profile,
+  **Trigger**: 中文写作, 写一篇文章, 整理成文章, 润色文章, 中文润色, 去AI味,
+  去机器味, AI写作痕迹, humanize, de-AI, make it sound human, 润色风格,
+  英文写作, house style, writing style profile,
   偏好写作风格, 按我的风格写, 统一论文口吻, 统一叙事与claim强度.
   **Use when**: polishing or drafting Chinese prose (tech notes, blog, README, docs)
   or English prose (papers, LaTeX, general text).
@@ -14,7 +15,7 @@ description: |
   **Guardrail**: 润色≠缩字数≠去AI味, information must survive editing; LaTeX Mode
   preserves citations, environments, and technical structure; never introduce
   new factual claims during style editing.
-default_mode: ask_first
+default_mode: direct
 write_policy: may_edit_inputs
 owner: academic
 allowed-tools:
