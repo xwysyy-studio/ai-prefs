@@ -7,8 +7,6 @@
 2. **硬分块 + 段落结构还原**（chunking + reassembly）
 3. **扩展评分维度**（5×10 core + 2×10 long-form add-on）
 
-**不**做的事：不新增 de-AI 模式清单（仍以 `patterns-chinese.md`、`patterns-english.md`、`paper-voice-contract.md` 为准）；不调用任何模型 API；不执行脚本；不做章节级 playbook。
-
 ---
 
 ## §1 Purpose & Scope
@@ -17,8 +15,6 @@
 - 单次 context 不足以装下整篇，导致截断或中途漂移
 - 无法跨会话续写（新开一个对话就要从头读）
 - 段落结构/编号/引用在大范围改写中容易错位
-
-本文件只管 workflow + state + scoring。改写规则本身 100% 复用已有 reference 文件，不做重复收录。
 
 ---
 
@@ -182,7 +178,7 @@ REASSEMBLE(改写后的 chunks[]):
 
 ## §5 Pass Ordering
 
-默认**两轮 focused pass**。与 baibaiAIGC 等"对抗检测器"类工具（第 1 轮刻意冗长化、第 2 轮删）不同，本流程两轮都以清除 AI 痕迹为目标，且都受信息守恒守卫约束（见 `SKILL.md` 全局守卫）：删除只针对零信息模式，不以字数减少为目标。
+默认**两轮 focused pass**。两轮都以清除 AI 痕迹为目标，都受信息守恒守卫约束（见 `SKILL.md` 全局守卫）：删除只针对零信息模式，不以字数减少为目标。
 
 ### Round 1 — Surface Pass（词句级）
 
@@ -225,6 +221,8 @@ REASSEMBLE(改写后的 chunks[]):
 
 ### 5+2 独立计分
 
+短文本按 Core 5×10=50 计分；本文件加载时（长文本）追加 Add-on，总分记 /70。
+
 **Core**（定义在本文件，唯一权威）：
 
 | 维度 | 问题 | 范围 |
@@ -260,10 +258,6 @@ Round total: (X+Y) / 70
 - 63-70：优秀，AI 痕迹清除且语义稳定
 - 49-62：良好，仍有改进空间
 - < 49：需重新修订
-
-### 向后兼容
-
-短文本（本文件不加载）继续用 5×10=50 评分；**不**在普通短文调用中引入 /70，避免污染现有 UX。
 
 ---
 
@@ -307,31 +301,3 @@ Round total: (X+Y) / 70
 | Voice 反模式 7 类 | `paper-voice-contract.md` |
 | LaTeX 学术安全规则 | `style-apply.md` § De-AI in academic LaTeX |
 | Core 5×10 评分定义 | 本文件 §7 |
-
----
-
-## §10 Verification Protocol
-
-### 短 passage 校验（实施完成后立即做）
-
-用 ~1500 字中文段落（含 1 个 `\cite{}`、1 段 inline code、1 个数字范围）手工走 §4 算法：
-- 应产出 2-3 个 chunk
-- 所有 hard guards 命中的位置被绕开或整段保留
-
-### 边界压力
-
-构造单段含 `\cite{wang2024}` + 三反引号代码 + `12.5–17.8%` + `（见表 3-1）`：
-- 期望：整段保留不切，manifest 中 `flags` 含 `"unsplittable-*"`
-
-### 端到端（用户场景）
-
-选一份数百行的真实长文档作为 `<目标长文档>`：
-1. Pre-check：`.humanize/` 能否创建在文档目录下
-2. R1 → chunk 数与文档规模匹配（约每 30-50 行一个）；还原后段落数、标题层级、编号与原文一致
-3. 快照 `humanize_record.json`；关闭会话
-4. 新开会话重新触发 → 应读 manifest 识别 R1 已完成，推进到 R2
-5. R2 终检：`pure_output ≥ 9`、无元话语、所有 `\cite{}` 和编号完整
-
-### 回归
-
-对 200 字短 snippet 调用 humanize → 确认 long-form add-on **未**激活（不输出 /70、不创建 `.humanize/`）。

@@ -49,5 +49,5 @@ story grammar（相近 paper 怎么把 gap 写成贡献、指标通常多简单�
 - ❌ 没指定调研助手交付物格式
 - ❌ 写成实现任务清单（Task 1/2/3）：这里是"待回答的问题"，不是"待执行的任务"
 
-style 层 anti-pattern（jargon、qualifier 保护、过度 hedge 包装确定性、bullet 堆砌）
-见 `~/.claude/rules/academic-writing.md` "探索性 / 提议性文档" 一节。
+style 层 anti-pattern：qualifier 保护见 `~/.claude/rules/academic-writing.md` 的「审稿与编辑」节；
+jargon、bullet 堆砌、过度 hedge 包装确定性见 `~/.claude/rules/writing-tone.md` 的词汇与句式两节。

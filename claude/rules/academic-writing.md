@@ -8,6 +8,9 @@
 - "润色 / polish / 改一下" = 微调措辞；"重构 / restructure" = 从头按新结构重写，不许退化成修修剪剪。批判分析 / limitations 要简洁可操作，不写 meta-commentary、不列显而易见的局限
 - 润色未指定批次时默认一次一段 diff 等确认；删减不超用户指定范围，大删（>30%）先列清单确认（精简 ≠ 砍半）；用户给字数限制时显式写进方案并报告实际字数
 - qualifier 保护：`几乎 / 大多数 / 约 / 部分 / 可能 / 倾向 / suggests / likely / partially / mostly / nearly` 等 claim-calibration 词删除前必须询问，超字数也不自作主张。引导句（Notably / 值得注意的是）另判：后接具体新发现 / 数据保留，空泛则删
+- camera-ready / 定稿阶段对非核心修改（形式化符号语义、边界情况措辞、把朴素表达改"更严谨"）持高拒绝阈值：原文自圆其说就保留，不为兼容边角情况加解释；必改仅限数据错误、citation 错误、明显英语错误、PDF 可见 artifact；已逐字确认过的句子不再动
+- "不一致"先辨类：同义动词替换、句式节奏变化是刻意 variation，保留；语态错位、时态混乱、语义错位才是缺陷，改。不按工程对称性强行统一句式
+- 用户给范本 = 措辞风格指引，不是字符级命令：不添加范本外的元素与修饰词，也不删原文已有内容（尤其译自已定稿论文的句子）；范本长度不是字数命令，双向都不机械执行
 - 反绝对化：obvious → straightforward，always → generally / usually，never → rare，avoid / eliminate → alleviate / relieve
 
 ## 引用硬规则
@@ -19,6 +22,7 @@
 ## 写作
 - 动笔前先接地（铁律 3 的学术落地）：实读项目 story / 口径文档与同行真实范文，用用户已定口径复述叙事骨架等确认再写；禁止用自带学术模板、规律罗列、增量补丁替代用户的体系
 - 面向真实读者（审稿人 / 选手）写，不面向内部术语体系（铁律 5）；保留作者原有措辞风格，不统一为"AI 标准英语"
+- 英文行文默认保守：不用时间隐喻（today / tomorrow 类）与 chatty 连接词，活泼与保守二选取保守；active voice 与 we 可用
 - 流程：先完整稿再优化（内容优先 → de-AI + claim 校准）；Intro 写两遍（早期当思维工具，evaluation 后从 evidence 重写），四层叙事（大领域 → 本领域 → 缺失 → 贡献）；Related Work 按主题分组、每组结尾回扣本文差异；结论每个 claim 有数据支撑，用 suggests 不用 proves，scope 明确
 - 学术英文禁用词（风险扫描非无条件禁令；偶现 MINOR，同词 3+ 次 MAJOR）：adaptive, leverage, robust, delve, utilize, facilitate, streamline, comprehensive, cutting-edge, novel, notably, furthermore, pivotal, paradigm, holistic, underscore, underpin, realm, embark, unveil, encompass, differentiate, pave the way, remarkable, breakthrough, transformative（学术 claim / 统计术语除外）
 - 可读性五透镜自查：逻辑连贯靠内容不靠连接词；每句经得住"凭什么"；概念就近解释不让读者翻页；正文不堆常识与实验细节（放 appendix）；每组实验后有 takeaway 段回扣 claim

@@ -1,30 +1,19 @@
----
-name: writing-style (style-apply mode)
-description: >-
-  Preferred writing style / house style profile for academic paper drafting and revision
-  (English + LaTeX). Use when the user asks: 偏好写作风格/按我的风格写/统一论文口吻/
-  统一叙事与claim强度/把整篇改到同一种学术英语风格. Apply a consistent voice, calibrated
-  claims, evidence-first narrative, and LaTeX craft conventions across sections
-  (Abstract/Intro/Related Work/Method/Experiments/Conclusion).
----
-
 # Preferred Writing Style (English + LaTeX)
 
-This skill is a **writing + LaTeX craft playbook** for keeping a paper’s voice consistent:
-structure, signposting, paragraph rhythm, claim calibration, tables/figures, and equation
-conventions.
+This playbook keeps a paper’s voice consistent: structure, signposting, paragraph rhythm,
+claim calibration, tables/figures, and equation conventions.
 
 It is designed to be used as a “style layer” you can apply repeatedly while drafting and
 revising sections.
 
 ## Scope / non-goals
 
-- This skill focuses on **writing quality** and **LaTeX craft**.
+- This playbook focuses on **writing quality** and **LaTeX craft**.
 - It is **not** a strict venue policy checker. If the user requests strict compliance checks,
   ask which venue they target and propose a checklist-based plan before making edits.
 - The stricter house rules (em-dash ban, banned-word lists) are deliberate de-AI
   tightening beyond venue norms, not review red lines: accepted papers do use these. The rules
-  stay in force anyway. Em-dashes especially: whatever their pre-AI history, AI training corpora
+  stay in force anyway. Em-dashes especially: AI training corpora
   have made them a default AI association, so they are banned outright (global rule
   `~/.claude/rules/writing-tone.md`); use commas, colons, parentheses, or split the sentence.
   Do not present house rules as "humans don't write this way"; present them as "we choose not to".
