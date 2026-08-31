@@ -58,9 +58,9 @@ allowed-tools: [Read, Edit, Write, Grep, Glob, WebSearch, WebFetch, AskUserQuest
 
 路由按故事成熟度，不按 idea 清晰度：说不清 / 想发散 → divergent；有故事但要外部补证据 → seed-brief；故事成形要判生死 → evaluate。注意：对象清楚、能列 prior work，不等于故事成形；说不出"一句话外行能懂的缺失维度"，就还在 divergent。
 
-## 这个 skill 能做什么、不能做什么
+## 交给论文写作
 
-它不保证生成好 idea。它把你从机制层、竞品层、工程层拉回故事层，逼你去拿领域分辨率、把话讲清楚；最终 framing 你拍板。
+故事成形并通过 evaluate 后，把一句话 story、核心例子、closest prior、已有材料和实际结果交给 `writing-style` 英文层。后者继续发展整篇论文的章节逻辑、实验叙事和具体写法；最终 framing 与实验推进由用户拍板。
 
 ## Skip if
 

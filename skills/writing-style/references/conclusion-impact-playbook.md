@@ -12,6 +12,8 @@ Recommended structure (6–10 sentences):
 4. 1–2 sentences: what this enables (broader relevance).
 5. 1–2 sentences: limitations + future work (specific).
 
+State limitations as concrete scope boundaries: the data regime, assumptions, task setting, or deployment conditions covered by the current paper. A fixable implementation defect belongs in the conclusion only when it defines the method's actual scope; otherwise repair it before submission. Keep future work attached to the named boundary.
+
 ## Impact statement (ICML requirement)
 
 Goal: a realistic, specific discussion of broader impacts.

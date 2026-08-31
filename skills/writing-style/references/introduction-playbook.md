@@ -15,6 +15,16 @@ Introduction 的核心是六个功能位的逻辑链：
 
 **Running example**：intro 里引入的例子必须在 Method（作为 walkthrough）和 Experiments（作为 case study）中兑现，不能用完就丢。
 
+## Prior-work 段落形状
+
+根据论文与已有工作的关系选择最自然的展开方式：
+
+1. **Challenge chain**：传统方法处理了早期困难，近期方法继续推进，但目标场景中的具体问题仍未解决。最后一个 limitation 要准确落到本文处理的 challenge。
+2. **Insight with history**：经典方法已经包含与本文 insight 相近的思想。先用这条历史线建立学术来源，再说明它在当前任务中的覆盖不足，最后引出本文的技术载体。
+3. **Novel task decomposition**：缺少直接 prior work 时，先定义新任务，再把困难拆成几个读者可以分别理解的 challenge，随后引出完整方案。
+
+增量工作也应从真实 technical challenge 起笔。直接摆出一个 naive 方案再逐项改进，会让读者把贡献理解成顺手补丁，并提前消耗本应由问题产生的好奇心。
+
 ## Limitation 措辞
 
 - 从对方覆盖范围切入，不贬低前人："X 存在严重缺陷"改为"X 聚焦于……而未涉及……"
@@ -27,5 +37,5 @@ Introduction 的核心是六个功能位的逻辑链：
 - [ ] 最相关工作被引用并直接比较
 - [ ] gap 一句话可指认，紧跟后果
 - [ ] limitation→challenge→module→contribution 链条完整可追溯
-- [ ] 贡献 2-4 条，每条在实验中有对应验证
+- [ ] 每条贡献都能指认其在实验叙事中的角色或实际结果
 - [ ] 无过度声称（"first"必须窄限定）

@@ -7,11 +7,14 @@ description: |
   consistency are tasks inside a layer, not separately routed modes.
   **Trigger**: 中文写作, 写一篇文章, 整理成文章, 润色文章, 中文润色, 去AI味,
   去机器味, AI写作痕迹, humanize, de-AI, make it sound human, 润色风格,
-  英文写作, house style, writing style profile,
+  英文写作, house style, writing style profile, 论文故事怎么讲, 结果怎么组织成论文,
+  实验部分写作思路, paper story, organize results into a paper,
   偏好写作风格, 按我的风格写, 统一论文口吻, 统一叙事与claim强度.
   **Use when**: polishing or drafting Chinese prose (tech notes, blog, README, docs)
-  or English prose (papers, LaTeX, general text).
-  **Skip if**: full paper drafting pipeline (use project CLAUDE.md).
+  or English prose (papers, LaTeX, general text), including developing a whole
+  paper's story, section logic, and experiment narrative from real project material.
+  **Skip if**: selecting a new research direction (use research-idea) or reviewing
+  a completed manuscript (use paper-review).
   **Guardrail**: 润色≠缩字数≠去AI味, information must survive editing; LaTeX Mode
   preserves citations, environments, and technical structure; never introduce
   new factual claims during style editing.
@@ -62,12 +65,14 @@ allowed-tools:
 
 ## Layer: english（英文写作）
 
-覆盖论文起草 / 改写 / voice 统一 / 去 AI 味 / LaTeX craft，也含英文博客与 README 的通用声部（声音手法见 `style-apply.md` 的 General text voice 节；学术 LaTeX 禁止个性化，见其 Academic Safety Guard）。
+覆盖整篇论文故事与章节逻辑的发展、实验叙事、论文起草 / 改写 / voice 统一 / 去 AI 味 / LaTeX craft，也含英文博客与 README 的通用声部（声音手法见 `style-apply.md` 的 General text voice 节；学术 LaTeX 禁止个性化，见其 Academic Safety Guard）。
 
 **核心工作流**：
-1. **先立 voice 锚（起草 / 改写正文前必做）**：读 `references/personal-style-profile.md`；用户给的 "gold" 段落优先级最高；两者不足以覆盖当前文体时索要 1-2 段理想范文，锚定后才动笔。
-2. 无风格偏好时简短询问：claim strength、voice、rhythm、editing freedom。
-3. 按 `references/style-apply.md` 的 Workflow A-D 执行；de-AI 目录（`patterns-english.md`）与 voice 反模式（`paper-voice-contract.md`，Categories 1-4、7 为主要目标）贯穿所有工作流，不是单独任务。
+1. **先读真实材料**：加载项目 CLAUDE.md / AGENTS.md、已定 story、论文全文、相关工作笔记与实际结果。项目口径是当前论文的第一权威。
+2. **学术起草先立全文逻辑**：加载 `references/narrative-flow-playbook.md`。故事已由 `research-idea` 或项目上下文拍板时直接发展；材料只能支持更窄口径时，把差距交给用户决定。
+3. **再立 voice 锚**：读 `references/personal-style-profile.md`；用户给的 "gold" 段落优先级最高；两者不足以覆盖当前文体时索要 1-2 段理想范文，锚定后才动笔。
+4. 无风格偏好时简短询问：claim strength、voice、rhythm、editing freedom。
+5. 按 `references/style-apply.md` 的 Workflow A-D 执行；de-AI 目录（`patterns-english.md`）与 voice 反模式（`paper-voice-contract.md`，Categories 1-4、7 为主要目标）贯穿所有工作流，不是单独任务。
 
 **Section playbooks**（按需加载）：`abstract-playbook.md`、`introduction-playbook.md`、`related-work-playbook.md`、`method-playbook.md`、`experiments-playbook.md`、`conclusion-impact-playbook.md`、`appendix-playbook.md`。
 
