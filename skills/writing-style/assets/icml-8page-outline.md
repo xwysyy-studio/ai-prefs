@@ -28,7 +28,12 @@ Use `claim-evidence-map.md`.
 | Related work | 0.5–0.8 | | |
 | Method | 1.5–2.5 | | Alg 1 / Eqn(s) |
 | Experiments | 2.5–3.5 | | Tables / Plots |
-| Limitations + conclusion | 0.5–1.0 | | |
+| Conclusion | 0.3–0.6 | | |
+
+## Venue-required statements
+
+- Impact statement: consult the current ICML author instructions for placement and page-budget treatment.
+- Limitations, ethics, or other disclosures: include them when the current venue requires them or when a boundary materially changes the central claim.
 
 ## Figures/tables plan
 
@@ -36,4 +41,3 @@ Use `claim-evidence-map.md`.
 2. Table 1 (main results): supports claims:
 3. Table 2 (ablations): supports claims:
 4. Figure 2 (analysis): supports claims:
-

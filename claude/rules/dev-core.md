@@ -18,6 +18,7 @@
 > 管辖范围：目标语义确认后，本节只筛选写进产出物的实现手段（代码 / 文档 / 配置），不能根据触发词重新分类领域合同。发现的设计层问题必须报告，报告不受克制判据约束（铁律 1 / 6）。
 
 - 不预先抽象：不到两个语义相同的真实调用点，不抽函数 / 类 / 接口；不为想象中的未来加扩展点、可选模式、没用上的参数
+- 定点编辑：修改既有文件只替换完成目标所需的片段；文件很短或大部分内容确实需要改变时才重写整文件。经历内容纠正的文本按铁律 7 重写受影响段落，不把段落重写扩大成整文件重写
 - 不静默兜底：对已确认属于异常的路径，错误优先抛到能处理的层；不 try/except 吞掉返回默认值，不偷偷换模型 / provider / URL / 解析器
 - 不层层设防：校验只在信任边界（外部输入 / 网络 / 持久化 / 安全 / 并发）做一次；内部函数假设调用方守约，不重复 null 检查和"不可能发生"分支
 - 不截断数据：数据路径上不加截断 / 字符上限 / top-N 裁剪，数据量大用流式或分页解决；任何会丢数据的裁剪必须用户点名，并在输出里报告丢了什么
@@ -39,11 +40,11 @@
 ## 进程与搜索
 - 停 dev server / 预览进程禁宽匹配 `pkill` / `killall`：先 `pgrep -f` 列出确认，再 kill 精确 PID（宽匹配曾误杀 MCP server 和自身）；`lsof -ti:PORT` 会把连过该端口的客户端一并列出，停服务器只杀 `-sTCP:LISTEN` 的监听进程
 - 长时后台任务用 Bash 工具原生 `run_in_background`（需跨命令持久时配 `dangerouslyDisableSandbox`），禁 `setsid ... &`：沙箱会回收进程，或泄漏成 PPID=1 孤儿副本（曾十几个爬虫副本互抢带宽）；启动后用 no-sandbox `ps` 确认进程数，`pgrep <脚本名>` 会匹配 wrapper 自身误判
-- headless 钉 Claude 模型版本用 `claude --model <完整模型ID>`（Agent 工具的 model 参数只收档位别名）；Fable 必须写 `claude-fable-5[1m]`，裸 ID 会 400
+- headless 钉 Claude 模型版本用 `claude --model <完整模型ID>`（Agent 工具的 model 参数只收档位别名）；Fable 5.1 使用 `claude-fable-5-1[1m]`，保留显式 1M 上下文后缀
 - Bash 搜索优先 `rg` 并限定路径 / 文件类型；禁止大目录树宽通配 `grep` / `ugrep`（曾 OOM 弄崩 WSL2）；能用原生 Grep 工具就不开 shell 搜索
 
 ## 并发执行
-批量同构 + 单元无依赖 + 外部等待主导，三条同时满足 → 默认并发，禁止逐个串行。先按速率约束定并发度 + 退避；命中限流降并发加退避，不退回串行。真实依赖 / 写同一资源 / 纯本地计算 → 串行合理。
+同一判断所需且结果互不依赖的读取、搜索与检查，在一轮工具调用里并发请求；只有后一步必须依赖前一步结果时才串行。批量同构 + 单元无依赖 + 外部等待主导，三条同时满足 → 默认并发，禁止逐个串行。先按速率约束定并发度 + 退避；命中限流降并发加退避，不退回串行。真实依赖 / 写同一资源 / 纯本地计算 → 串行合理。
 
 ## API 脚本与失败阶梯
 - 脚本默认：认证预检（key 缺失 / 格式错明确报错退出）；429 / 5xx 指数退避最多 3 次，401 / 403 立即报错不重试；HTTP 超时默认 30s
@@ -60,4 +61,4 @@
 - 后台 agent fire-and-forget：结果等 task-notification 推送再消费，不用 TaskOutput block=true 长超时阻塞等待（会话对用户呈现为卡死）；结果当轮必需且预估很快就直接同步跑
 
 ## Codex 调用底线
-任何 Codex 委派前先读 `references/codex-delegation.md`（模型路由 / 写模式门槛 / 审查隔离 / 失败处理的唯一权威）。底线：一律走 codex-delegate skill 的 codexctl；model / effort 默认继承 codex config（当前 gpt-5.6-sol / xhigh），不静默降级换模型；长任务用后台 Bash 跑 `--follow` 收果，禁止轮询干等；status 报 STALLED 先归因再 cancel；失败不静默 fallback。
+任何 Codex 委派前先读 `references/codex-delegation.md`（模型路由 / 写模式门槛 / 审查隔离 / 失败处理的唯一权威）。底线：一律走 codex-delegate skill 的 codexctl；model / effort 默认继承 codex config，不静默降级换模型；长任务用后台 Bash 跑 `--follow` 收果，禁止轮询干等；status 报 STALLED 先归因再 cancel；失败不静默 fallback。

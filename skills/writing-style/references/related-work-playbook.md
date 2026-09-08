@@ -1,6 +1,6 @@
 # Related work playbook (ICML-style, English)
 
-Goal: convince reviewers you know the literature and that your contributions are **distinct**.
+Goal: place the paper's contribution in the literature by stating what prior work covers and what question remains open.
 
 ## Structure (0.5–0.8 pages)
 
@@ -11,18 +11,18 @@ Goal: convince reviewers you know the literature and that your contributions are
    - Compare directly on assumptions, scope, and results.
 4. Optional: a compact comparison table in the appendix if space is tight.
 
-## What reviewers look for
+## What readers need
 
-- Do you cite the most obvious baselines / related papers?
-- Do you clearly state what is new vs what is inherited?
-- Do you handle “incremental” concerns by direct comparison?
+- The closest and most relevant work is present.
+- Each comparison names the prior work's actual assumptions, scope, or results.
+- The remaining gap leads directly to the present paper's positive claim.
 
 ## Writing tactics
 
 - Use short, comparative sentences:
-  - “Unlike X, we …”
-  - “X focuses on …, whereas we …”
-  - “X assumes …; we relax this by …”
+  - “X studies … under … conditions. The present work examines …”
+  - “X covers …, leaving … unmeasured.”
+  - “X assumes …. We study the setting in which ….”
 - Avoid “citation dumps” like “Many works study … [1–30]”.
   - Instead, cite 2–6 representative works and categorize them.
 
@@ -30,4 +30,3 @@ Goal: convince reviewers you know the literature and that your contributions are
 
 - Cite your own prior work in third person like any other citation.
 - Avoid identity-revealing phrasing (“in our previous work …”).
-

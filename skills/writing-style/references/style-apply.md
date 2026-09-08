@@ -22,8 +22,7 @@ revising sections.
 
 If the user did not provide a style preference, ask only what you need (keep it short):
 
-- **Claim strength**: conservative (default) vs stronger wording.
-- **Voice**: “we” vs impersonal; assertive vs cautious.
+- **Voice**: “we” vs impersonal; direct vs reserved wording within the same evidence boundary.
 - **Sentence/paragraph rhythm**: shorter vs longer; how much signposting to use.
 - **Editing freedom**: can you restructure paragraphs/sections, or only micro-edits?
 - **LaTeX freedom**: can you refactor macros / project structure, or keep as-is?
@@ -34,7 +33,7 @@ reference.
 ### Style profile template (user fill-in, optional)
 
 - Tone keywords (3–8):
-- Claim strength: conservative / medium / strong
+- Claim wording: strongest formulation supported by the evidence
 - Allowed rewrites: micro / moderate / restructure
 - “We” voice: yes / no
 - Preferred transitions: light / medium / heavy
@@ -52,7 +51,7 @@ When asked to “write/rewrite a paper in my preferred style”, request:
 
 1. The LaTeX project (at least the main `.tex`, `macro.tex` if any, `.bib`, and key `tables/*.tex`).
 2. Paper stage: “outline only”, “first draft”, “revise existing draft”, or “final polish”.
-3. Claimed contributions (2–4 bullet points) and the strongest evidence for each (figure/table/metric).
+3. Proposed central claim, supporting contributions, and the actual evidence for each (figure/table/metric). If these are unsettled, request the raw materials instead of assuming them.
 4. Target audience + closest related work (2–5 papers).
 5. Any venue constraints the user cares about (page limit / anonymization / required sections).
 
@@ -67,9 +66,9 @@ When asked to “write/rewrite a paper in my preferred style”, request:
 
 0. Start from the settled one-sentence story (from `research-idea` or the user): what prior approaches flatten, conflate, or leave out of view, and what this paper lays open. Every step below expands that sentence. If the story is still unsettled, route to `research-idea` first.
 1. Create a claim→evidence map (use `assets/claim-evidence-map.md`).
-2. Draft an outline with a page budget if applicable (use `assets/icml-8page-outline.md` as a generic template).
+2. Draft an outline with the target venue's page budget. Use `assets/icml-8page-outline.md` only for an 8-page ICML-style main-paper format; otherwise derive the section budget from the venue requirements.
 3. Plan figures/tables first (what supports each claim).
-4. Write a “reviewer-proof” introduction arc:
+4. Write an evidence-led introduction arc:
    - Context → gap → why hard → approach → contributions → results preview.
 5. Produce section-specific TODOs for Method and Experiments (what must be said, what can be deferred to appendix).
 
@@ -80,11 +79,11 @@ Also useful: `references/method-playbook.md`, `references/experiments-playbook.m
 
 1. Extract structure (optional):
    - `python3 <skill-root>/scripts/extract_tex_outline.py --tex <main.tex>`
-2. Improve the paper’s “spine”:
-   - One-sentence thesis, then 2–4 contributions, then claim→evidence alignment.
-3. Rewrite Abstract + Introduction first (highest leverage).
-4. Make each section start with its key message (1–2 sentences).
-5. Add signposting transitions between sections and within long sections.
+2. Rebuild the claim→evidence map from the draft and actual results (`assets/claim-evidence-map.md`).
+3. Select the strongest valuable central claim the evidence supports, then align the one-sentence thesis and supporting contributions. If material evidence invalidates the current center, stop and ask the user to narrow or reconstruct the story before rewriting prose.
+4. Rewrite Abstract + Introduction first (highest leverage).
+5. Make each section start with its key message (1–2 sentences).
+6. Add signposting transitions between sections and within long sections.
 
 Reference: `references/abstract-playbook.md`, `references/personal-style-profile.md`.
 Also useful: `references/related-work-playbook.md`, `references/method-playbook.md`, `references/experiments-playbook.md`.
@@ -108,19 +107,20 @@ References: `references/latex-project-structure.md`, `references/equations-and-n
 
 ## Workflow D — Final polish + submission-aware self-checks
 
-1. Run quick writing checks (heuristic):
+1. For an ICML 2026 submission, run its heuristic writing check:
    - `python3 <skill-root>/scripts/icml2026_writing_quickcheck.py --tex <main.tex>`
+   For other venues, run only checks whose assumptions match the target venue.
 2. Ensure:
    - Abstract is one paragraph and states problem, gap, approach, and results.
    - Contributions are explicit and match experiments.
-   - Limitations are specific (not generic “future work”).
+   - Venue-required limitations, ethics, and impact statements are present and specific; any other scope statement is tied to a boundary that changes how readers interpret the central claim.
 3. If the user targets a double-blind venue, check anonymization leaks (acknowledgements, URLs, PDF metadata) and ask before making structural edits.
 
 Reference: `references/conclusion-impact-playbook.md`.
 
-## Mentor review rubric (what I check first)
+## Drafting quality check
 
-This is the high-leverage checklist I use when “reviewing as an advisor”:
+Use this checklist while constructing or revising the paper. Independent manuscript assessment belongs to `paper-review`.
 
 1. **Spine clarity**: one-sentence thesis + 2–4 contributions, each tied to a figure/table.
 2. **Abstract quality**: single paragraph; gap is explicit; includes at least one concrete number; bounded claims.
@@ -131,11 +131,11 @@ This is the high-leverage checklist I use when “reviewing as an advisor”:
 
 ## General text voice（非学术英文：博客 / README / 随笔）
 
-Academic Safety Guard 只约束学术链路。通用英文文本在清除模式之外还要有真人声音，无声的"干净"文本同样一眼是 AI：句长均一、零观点、零第一人称、读起来像新闻通稿。手法：有观点就表态，不中性罗列事实；长短句混排；承认复杂感受（"impressive but also unsettling"比"impressive"真实）；合适处用 "I"；允许一两句离题；情绪写具体不写笼统。完整前后对照见 `examples/english.md`（Example 6）。README 与产品文案的禁词及叙事规则以 `~/.claude/rules/writing-tone.md` 的 User-facing Docs 区为准。
+Academic Safety Guard 只约束学术链路。通用英文文本在清除模式之外还要有真人声音，无声的"干净"文本同样一眼是 AI：句长均一、零观点、零第一人称、读起来像新闻通稿。手法（均以原文或用户上下文已有的立场、感受与人称为来源，见 SKILL.md 全局守卫"声音来源守恒"）：原文有观点就直接表态，不中性罗列事实；长短句混排；承认复杂感受（"impressive but also unsettling"比"impressive"真实）；原文已有第一人称处用 "I"；允许一两句离题；情绪写具体不写笼统。完整前后对照见 `examples/english.md`（Example 6）。README 与产品文案的禁词及叙事规则以 `~/.claude/rules/writing-tone.md` 的 User-facing Docs 区为准。
 
 ## De-AI in academic LaTeX (applies across all workflows)
 
-De-AI is not a separate task: pattern removal runs inside every workflow above. Catalogs: `references/patterns-english.md` (read its usage criteria first) + `references/paper-voice-contract.md` (Categories 1-4 and 7 are the primary targets). The real de-AI target in academic LaTeX is syntactic over-elaboration: participial analytical tails (", indicating/suggesting that...") and abstract nominal subjects (see `paper-voice-contract.md` Category 7).
+De-AI is not a separate task: pattern removal runs inside every workflow above. Catalogs: `references/patterns-english.md` (read its usage criteria first) + `references/paper-voice-contract.md` (Categories 1-4, 7, and 8 are the primary targets). The main academic targets are syntactic over-elaboration (Category 7) and defensive claim posture that substitutes author stance for factual scope (Category 8).
 
 ### Academic Safety Guard (强制规则)
 

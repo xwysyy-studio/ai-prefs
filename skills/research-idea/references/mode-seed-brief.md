@@ -1,7 +1,7 @@
 # Mode: Seed Brief（调研 brief）
 
 用户有粗略方向或现象触发点，但方法/实验/贡献都没定。这个 mode 把"目前的所思所想"
-结构化成一份 brief，交给更强的外部调研助手（GPT-5.6 Sol Pro / Codex / 合作者）去补这个圈子的
+结构化成一份 brief，交给更强的外部调研助手（GPT-6 Astra Pro / Codex / 合作者）去补这个圈子的
 story grammar（相近 paper 怎么把 gap 写成贡献、指标通常多简单、体面概念是当标签还是真当方法）、
 看 closest prior 有没有占了同一维度、找证据，**不是宣告已经想清楚了**。
 

@@ -4,15 +4,14 @@
 
 Goal: restate the contribution and the main takeaway **without introducing new claims**.
 
-Recommended structure (6–10 sentences):
+Recommended structure (4–8 sentences):
 
 1. One sentence: what you contributed (artifact/method).
 2. One sentence: what is the key technical idea.
 3. 1–2 sentences: headline results (quantitative if possible).
 4. 1–2 sentences: what this enables (broader relevance).
-5. 1–2 sentences: limitations + future work (specific).
 
-State limitations as concrete scope boundaries: the data regime, assumptions, task setting, or deployment conditions covered by the current paper. A fixable implementation defect belongs in the conclusion only when it defines the method's actual scope; otherwise repair it before submission. Keep future work attached to the named boundary.
+A scope boundary enters the conclusion only when it materially changes how readers should interpret the central claim or when the target venue requires it in this section. State that boundary positively as the data regime, assumptions, task setting, or deployment conditions covered by the evidence. Material contrary results remain part of the paper's evidence chain and must already have narrowed or reconstructed the claims before the conclusion is written.
 
 ## Impact statement (ICML requirement)
 

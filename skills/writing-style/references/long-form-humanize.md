@@ -188,7 +188,7 @@ REASSEMBLE(改写后的 chunks[]):
 
 ### Round 2 — Voice-Contract Pass（篇章级，按语言选材料）
 
-- **英文依据**：`paper-voice-contract.md` Categories 1-7。处理目标：R1 未清除的篇章级机器味：Planner Talk、Template Stems 残留、Hedge Stacking 深层堆叠、Symmetry Addiction、Citation Contamination、Grandiose Framing、Syntactic Over-Elaboration（分词解读尾、抽象名词主语）
+- **英文依据**：`paper-voice-contract.md` Categories 1-8。处理目标：R1 未清除的篇章级机器味：Planner Talk、Template Stems 残留、Hedge Stacking 深层堆叠、Symmetry Addiction、Citation Contamination、Grandiose Framing、Syntactic Over-Elaboration（分词解读尾、抽象名词主语）、Defensive Claim Posture（作者姿态替代事实范围）
 - **中文依据**：`chinese-writing.md` 总判据 + `~/.claude/rules/writing-tone.md` 句式/段落级。处理目标：结构性重复、评价性收束残留、幽灵信息、假逻辑连接词、段落主题混杂。中文长文不加载英文 voice contract
 
 ### Override
@@ -298,6 +298,6 @@ Round total: (X+Y) / 70
 | 英文 de-AI 模式清单 | `patterns-english.md` |
 | 中文 de-AI 模式清单 | `patterns-chinese.md` |
 | 中文总判据与工作流 | `chinese-writing.md` |
-| Voice 反模式 7 类 | `paper-voice-contract.md` |
+| Voice 反模式 8 类 | `paper-voice-contract.md` |
 | LaTeX 学术安全规则 | `style-apply.md` § De-AI in academic LaTeX |
 | Core 5×10 评分定义 | 本文件 §7 |

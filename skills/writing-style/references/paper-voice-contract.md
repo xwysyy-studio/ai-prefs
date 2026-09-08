@@ -73,23 +73,40 @@ When the vocabulary bans above are enforced, generator residue migrates into syn
 
 The aloud test: if the tail could attach to any result in any paper of the genre, it is filler. Native glosses take the form of a fresh short sentence: "It demonstrates that ...", "This may be because ...", "We believe that ...".
 
+### Category 8: Defensive Claim Posture (author stance in place of factual scope)
+
+This pattern wraps the evidence boundary in statements about what the authors claim, attempt, or permit themselves to conclude. The wrapper adds a defensive posture while hiding the useful facts one level deeper.
+
+| Anti-Pattern | Example (BAD) | Fix (GOOD) |
+|---|---|---|
+| Claim denial | "We do not claim that the method is generally effective." | State the evaluated scope and result directly. |
+| Self-limiting contribution | "Our contribution is limited to showing a 6-point gain under a 2,000-token budget." | "Under a 2,000-token budget, the method improves exact-match accuracy by 6 points." |
+| Scope narration | "We confine our effectiveness claim to two of the three datasets." | "The method improves exact-match accuracy on two of the three evaluated datasets." |
+| Defensive contrast | "The method is not generally superior; rather, it only helps in low-budget settings." | "Across the evaluated settings, [state the observed overall result]. Under low-budget settings, the method improves [metric] by [value]." |
+
+Before repairing the prose, determine whether the denied proposition summarizes an observed failure, negative result, or counterexample. Preserve real counterevidence as a direct factual result and use it to narrow the claim or revisit the paper story. Only the author-stance wrapper is removable.
+
+Repair procedure: extract the object, condition, metric, number, and every observed result, including negative results; write those facts as subject, action, condition, and result. Do not preserve the author's claim posture as a "qualifier." A qualifier limits the proposition itself (for example, "on two of three datasets" or "under a 2,000-token budget"); a sentence about what the authors do not claim merely narrates their stance.
+
+Carve-out: a rebuttal or a passage responding to an objection already present in a review, cited source, or reader-visible text may need a direct denial. Ordinary manuscript positioning and conclusions do not.
+
 ## Diagnosis Protocol
 
 When reviewing text for voice contamination:
 
-1. **Scan** each paragraph for patterns from the 7 categories above
-2. **Tag** each instance with its category (e.g., `[PLANNER_TALK]`, `[TEMPLATE_STEM]`, `[HEDGE_STACK]`, `[SYMMETRY]`, `[CITATION_CONTAM]`, `[GRANDIOSE]`, `[SYNTAX_ORNATE]`)
-3. **Severity**: Count instances per 500 words
-   - 0-1: Clean (no action needed)
-   - 2-3: Light contamination (local fixes)
-   - 4+: Heavy contamination (paragraph rewrite recommended)
+1. **Scan** each paragraph for patterns from the 8 categories above
+2. **Tag** each instance with its category (e.g., `[PLANNER_TALK]`, `[TEMPLATE_STEM]`, `[HEDGE_STACK]`, `[SYMMETRY]`, `[CITATION_CONTAM]`, `[GRANDIOSE]`, `[SYNTAX_ORNATE]`, `[DEFENSIVE_POSTURE]`)
+3. **Severity**: Category 5, unsupported Category 6, and Category 8 each require a local fix even when only one instance appears. For Categories 1-4 and 7, use density to choose the repair scope:
+   - 0-1 per 500 words: isolated (fix only when it reduces clarity or violates the quality gate)
+   - 2-3 per 500 words: light contamination (local fixes)
+   - 4+ per 500 words: heavy contamination (paragraph rewrite recommended)
 4. **Fix**: Apply the corresponding fix from the table. Deletion is for zero-information filler only; a sentence that carries real content gets re-shaped, not removed (information conservation, see writing-style `SKILL.md` 全局守卫)
 
 ## Integration Points
 
 ### writing-style（英文层）
 - Apply this contract during `references/style-apply.md` Workflow B (rewrite), Workflow D (final polish), and all de-AI passes
-- Categories 1-4 and 7 are primary targets; Categories 5-6 are secondary
+- Categories 1-4, 7, and 8 are primary targets; Categories 5-6 are secondary
 - Use the diagnosis protocol as a pre-check before style application; preserve all \cite{}, \ref{}, and non-prose environments while fixing voice (see style-apply.md Preservation Rules)
 
 ## Voice Quality Gate
@@ -97,6 +114,7 @@ When reviewing text for voice contamination:
 A paragraph passes the voice gate if:
 - Zero Category 5 (Citation Contamination) instances
 - Zero Category 6 (Grandiose Framing) instances for claims without evidence
+- Zero Category 8 (Defensive Claim Posture) instances unless the sentence responds to a reader-visible objection
 - ≤1 instance from Categories 1-4 per 300 words
 - No 3+ clustered Category 7 instances in one section (isolated instances are acceptable academic hedging)
 - No consecutive sentences starting with the same template stem
