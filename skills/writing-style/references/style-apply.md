@@ -1,222 +1,211 @@
-# Preferred Writing Style (English + LaTeX)
+# Academic English and LaTeX
 
-This playbook keeps a paper’s voice consistent: structure, signposting, paragraph rhythm,
-claim calibration, tables/figures, and equation conventions.
+Read this reference for paper writing and LaTeX tasks. General English prose
+uses SKILL.md's common guidance and does not require paper references.
+For paper prose, also read paper-voice-contract.md and the applicable
+`~/.claude/rules/academic-writing.md` requirements before writing or polishing.
 
-It is designed to be used as a “style layer” you can apply repeatedly while drafting and
-revising sections.
+Use the user's requested operation to select the work. Existing prose,
+project requirements, approved examples, and the actual evidence establish
+the scope and voice. The current task and the skill's shared rules take
+precedence over example structures.
 
-## Scope / non-goals
+## Establish what is being changed
 
-- This playbook focuses on **writing quality** and **LaTeX craft**.
-- It is **not** a strict venue policy checker. If the user requests strict compliance checks,
-  ask which venue they target and propose a checklist-based plan before making edits.
-- The stricter house rules (em-dash ban, banned-word lists) are deliberate de-AI
-  tightening beyond venue norms, not review red lines: accepted papers do use these. The rules
-  stay in force anyway. Em-dashes especially: AI training corpora
-  have made them a default AI association, so they are banned outright (global rule
-  `~/.claude/rules/writing-tone.md`); use commas, colons, parentheses, or split the sentence.
-  Do not present house rules as "humans don't write this way"; present them as "we choose not to".
+Read the supplied text and the locally available material relevant to the
+request before asking for inputs. Determine the intended reader, paper stage,
+editing scope, and applicable venue constraints from that material.
+Read personal-style-profile.md and the user's approved passages to calibrate
+selection, density, and expression; current approved samples take precedence.
+Ask only about unresolved choices that would materially change the result.
 
-## Ask-first: capture the user’s style profile
+Determine the operation from the current request. For specified additions or
+deletions, change the identified content and preserve unrelated text. Wording
+edits, new explanations, and structural work each follow their authorized
+scope. Preserve settled decisions and complete that scope without requiring
+a separate confirmation for each paragraph.
 
-If the user did not provide a style preference, ask only what you need (keep it short):
+## Polishing an existing passage
 
-- **Voice**: “we” vs impersonal; direct vs reserved wording within the same evidence boundary.
-- **Sentence/paragraph rhythm**: shorter vs longer; how much signposting to use.
-- **Editing freedom**: can you restructure paragraphs/sections, or only micro-edits?
-- **LaTeX freedom**: can you refactor macros / project structure, or keep as-is?
+Read the passage with its relevant context. Identify specific problems in
+clarity, wording, sentence flow, or redundant phrasing. Revise those problems
+and leave sound text alone. Retain the original claims, values, conditions,
+comparisons, and uncertainty.
 
-If the user shares 1–2 “gold” paragraphs they like, treat that as the highest-priority style
-reference.
+Read patterns-english.md for the polishing pass and judge the actual sentences.
+Repeated wording can be necessary for technical precision; variation can
+improve rhythm when the
+meaning is unchanged. Clarify an abstract subject using facts already present
+in the material, rather than adding new specifics.
 
-### Style profile template (user fill-in, optional)
+Check the resulting text against the source. If the problem requires changing
+the paper's direction or the meaning of a result, explain that issue to the
+user instead of treating it as an expression edit.
 
-- Tone keywords (3–8):
-- Claim wording: strongest formulation supported by the evidence
-- Allowed rewrites: micro / moderate / restructure
-- “We” voice: yes / no
-- Preferred transitions: light / medium / heavy
-- LaTeX constraints: keep macros / allow macro edits / allow project refactor
+## Drafting from material
 
-## Paths (so commands work)
+Read the project's question, settled story, related work, and actual results.
+When the research direction itself remains open, use research-idea; when the
+direction is settled, develop its explanation here.
 
-Helper scripts live in this skill's `scripts/` directory. Run them with a path relative to
-the skill root (the directory containing this skill's SKILL.md, written `<skill-root>` below),
-so commands work regardless of where the skill is installed.
+Before drafting, restructuring, or interpreting results, map each core claim
+to the actual source, comparison conditions, supported scope, uncertainty, and
+substantive counterevidence. Distinguish reported observations from stronger
+inferences and identify the evidence each inference needs. For a whole-paper
+narrative or substantial structural rewrite, read narrative-flow-playbook.md
+to organize the supported central claim and its supporting sections. When
+several claims or result groups share evidence, use the existing
+assets/claim-evidence-map.md format; the mapping can stay in current task
+material and does not require a separate file. Resolve material contradictions
+with the user before building the prose on them.
 
-## What to ask the user for (inputs)
+Arrange sections, figures, tables, and examples according to the reader's
+questions and the applicable paper format. Plan an introduction that explains
+the problem, relevant prior work, gap, approach, and supported contribution
+in an order suited to this paper. The job each passage performs matters more
+than a fixed number of paragraphs or contribution items.
 
-When asked to “write/rewrite a paper in my preferred style”, request:
+Use the appropriate section playbooks. Choose a concrete result for an
+abstract when it carries the central finding; preserve the needed qualitative
+explanation and conditions. A numerical result is not a quota for every
+abstract. When experiments are still pending, organize the questions they
+need to answer without inventing their results.
 
-1. The LaTeX project (at least the main `.tex`, `macro.tex` if any, `.bib`, and key `tables/*.tex`).
-2. Paper stage: “outline only”, “first draft”, “revise existing draft”, or “final polish”.
-3. Proposed central claim, supporting contributions, and the actual evidence for each (figure/table/metric). If these are unsettled, request the raw materials instead of assuming them.
-4. Target audience + closest related work (2–5 papers).
-5. Any venue constraints the user cares about (page limit / anonymization / required sections).
+For an ICML-style eight-page main paper, assets/icml-8page-outline.md is an
+available example; other formats use their own requirements. Read and follow
+current official venue requirements when the task depends on them.
 
-## Workflow selector
+## Restructuring an authorized section or paper
 
-- If the user has **no draft** → Workflow A (outline from a settled story).
-- If the user has a **draft** → Workflow B (rewrite + strengthen narrative).
-- If the user needs **LaTeX help** → Workflow C (LaTeX craft).
-- If the user is close to submission → Workflow D (final polish + submission-aware self-checks).
+Read the material in the requested scope and determine why its current
+organization does not serve the reader. If useful, extract an outline with
+scripts/extract_tex_outline.py, using the actual main TeX file.
 
-## Workflow A — Outline from a settled story
+Identify the content the final version needs: claims, supporting evidence,
+conditions, definitions, examples, and substantive counterevidence. Check
+that this inventory preserves what remains necessary from the current draft.
+Choose the new order, then rewrite the affected sections from that material.
 
-0. Start from the settled one-sentence story (from `research-idea` or the user): what prior approaches flatten, conflate, or leave out of view, and what this paper lays open. Every step below expands that sentence. If the story is still unsettled, route to `research-idea` first.
-1. Create a claim→evidence map (use `assets/claim-evidence-map.md`).
-2. Draft an outline with the target venue's page budget. Use `assets/icml-8page-outline.md` only for an 8-page ICML-style main-paper format; otherwise derive the section budget from the venue requirements.
-3. Plan figures/tables first (what supports each claim).
-4. Write an evidence-led introduction arc:
-   - Context → gap → why hard → approach → contributions → results preview.
-5. Produce section-specific TODOs for Method and Experiments (what must be said, what can be deferred to appendix).
+Start with the part whose organization controls the requested change.
+Abstract and Introduction are appropriate starting points for a full-paper
+reframing, while an experiment-section task can stay within that section and
+its actual dependencies. Change other sections only within the authorized
+scope, or report the needed extension.
 
-Reference: `references/personal-style-profile.md`, `references/introduction-playbook.md`.
-Also useful: `references/method-playbook.md`, `references/experiments-playbook.md`.
+Read the assembled result in order and check both the argument and the
+meaning of every retained result. Citations follow the claims they support.
+Use long-form-humanize.md when the work needs multiple sections or sessions.
 
-## Workflow B — Rewrite + improve clarity (existing draft)
+## LaTeX and presentation work
 
-1. Extract structure (optional):
-   - `python3 <skill-root>/scripts/extract_tex_outline.py --tex <main.tex>`
-2. Rebuild the claim→evidence map from the draft and actual results (`assets/claim-evidence-map.md`).
-3. Select the strongest valuable central claim the evidence supports, then align the one-sentence thesis and supporting contributions. If material evidence invalidates the current center, stop and ask the user to narrow or reconstruct the story before rewriting prose.
-4. Rewrite Abstract + Introduction first (highest leverage).
-5. Make each section start with its key message (1–2 sentences).
-6. Add signposting transitions between sections and within long sections.
+Make the requested formatting or technical change in the project's existing
+structure. Read the relevant reference: latex-project-structure.md,
+equations-and-notation.md, figures-and-tables.md, or
+definitions-theorems-playbook.md.
 
-Reference: `references/abstract-playbook.md`, `references/personal-style-profile.md`.
-Also useful: `references/related-work-playbook.md`, `references/method-playbook.md`, `references/experiments-playbook.md`.
+Preserve the semantics of symbols, equations, labels, and reference targets.
+Use the project's notation and conventions. Modular section files, separate
+large tables, booktabs, and self-contained captions are available practices
+when they fit the task; a local LaTeX question does not authorize reorganizing
+the project.
 
-## Workflow C — LaTeX craft (equations / figures / tables / structure)
+Helpers live in the skill's scripts/ directory; resolve their paths from the
+skill root. assets/latex-snippets.tex and assets/macro-template.tex provide
+examples for requested formatting work. Inspect the actual rendered artifact
+after layout changes.
 
-1. Enforce clean project structure:
-   - Main file imports packages + `\input{macro}`.
-   - Sections live in separate `*.tex` files.
-   - Large tables live in `tables/*.tex` and are `\input{}` into `table*`.
-2. Equations and notation:
-   - Define symbols before use.
-   - Use `\triangleq` for definitions and `\text{}` for textual subscripts.
-   - Prefer one equation per concept; push long derivations to appendix.
-3. Figures/tables:
-   - Captions are self-contained and interpret the figure (not just “results”).
-   - Use `booktabs` style tables; avoid vertical rules.
-   - Ensure readability in grayscale (color as an accent, not the only channel).
+## Final polish
 
-References: `references/latex-project-structure.md`, `references/equations-and-notation.md`, `references/figures-and-tables.md`, `assets/latex-snippets.tex`.
+Respect the approved content and the submission stage. Fix the requested
+language, reference, data, or visible rendering problems. Reopen a settled
+argument only when new evidence materially changes it and the user decides
+how to proceed.
 
-## Workflow D — Final polish + submission-aware self-checks
+For ICML 2026, scripts/icml2026_writing_quickcheck.py provides a heuristic
+check when its assumptions match the task. Use applicable checks for other
+venues. Verify required sections and anonymization when requested or
+required for the authorized submission work.
 
-1. For an ICML 2026 submission, run its heuristic writing check:
-   - `python3 <skill-root>/scripts/icml2026_writing_quickcheck.py --tex <main.tex>`
-   For other venues, run only checks whose assumptions match the target venue.
-2. Ensure:
-   - Abstract is one paragraph and states problem, gap, approach, and results.
-   - Contributions are explicit and match experiments.
-   - Venue-required limitations, ethics, and impact statements are present and specific; any other scope statement is tied to a boundary that changes how readers interpret the central claim.
-3. If the user targets a double-blind venue, check anonymization leaks (acknowledgements, URLs, PDF metadata) and ask before making structural edits.
+Independent manuscript assessment belongs to paper-review. A writing pass
+checks that its own changes are faithful, clear, and usable.
 
-Reference: `references/conclusion-impact-playbook.md`.
+## Expression and voice
 
-## Drafting quality check
+Academic English is plain, direct, and specific. Keep the user's established
+voice, including active voice and we where appropriate. First-person stance,
+opinions, and experiences must come from the original text or user context.
+Academic polishing adds no humor or personal narrative.
 
-Use this checklist while constructing or revising the paper. Independent manuscript assessment belongs to `paper-review`.
+For polishing, humanizing, voice consistency, or expression audit, read
+patterns-english.md and apply the already required paper-voice-contract.md.
+Logical connectives such as However, Moreover, and Thus are normal academic
+devices when their relationships are real. Remove empty announcements and
+redundant transitions while preserving useful explanation.
 
-1. **Spine clarity**: one-sentence thesis + 2–4 contributions, each tied to a figure/table.
-2. **Abstract quality**: single paragraph; gap is explicit; includes at least one concrete number; bounded claims.
-3. **Introduction arc**: context → closest work → gap → why hard → approach → contributions → (optional) results preview.
-4. **Claim calibration**: avoid “the first” unless narrowly scoped; “significant” requires an adjacent number (the accepted-paper norm is adjacency, not avoidance).
-5. **Evidence alignment**: every contribution is verified by experiments; no “paper-only” promises.
-6. **LaTeX hygiene**: no undefined refs; tables/figures are readable; captions are self-contained.
+Let sentence length follow the argument. Split a long sentence when that
+makes its subjects, conditions, and result easier to follow; retain a longer
+sentence when its relationship is clear. Do not manufacture rhythm by
+changing sentences solely to meet a length distribution.
 
-## General text voice（非学术英文：博客 / README / 随笔）
+Combine redundant hedges only when the proposition's uncertainty stays
+equivalent. A qualifier that limits the evaluated population, setting, or
+strength of evidence remains attached to the claim. Keep explanations of
+results when they contribute new, supported meaning.
 
-Academic Safety Guard 只约束学术链路。通用英文文本在清除模式之外还要有真人声音，无声的"干净"文本同样一眼是 AI：句长均一、零观点、零第一人称、读起来像新闻通稿。手法（均以原文或用户上下文已有的立场、感受与人称为来源，见 SKILL.md 全局守卫"声音来源守恒"）：原文有观点就直接表态，不中性罗列事实；长短句混排；承认复杂感受（"impressive but also unsettling"比"impressive"真实）；原文已有第一人称处用 "I"；允许一两句离题；情绪写具体不写笼统。完整前后对照见 `examples/english.md`（Example 6）。README 与产品文案的禁词及叙事规则以 `~/.claude/rules/writing-tone.md` 的 User-facing Docs 区为准。
+Use the user's approved passages for calibration; examples/english.md can
+help with a concrete expression problem. Personal style preferences are not
+venue rules or evidence that a text was written by AI.
 
-## De-AI in academic LaTeX (applies across all workflows)
+## Preservation Rules
 
-De-AI is not a separate task: pattern removal runs inside every workflow above. Catalogs: `references/patterns-english.md` (read its usage criteria first) + `references/paper-voice-contract.md` (Categories 1-4, 7, and 8 are the primary targets). The main academic targets are syntactic over-elaboration (Category 7) and defensive claim posture that substitutes author stance for factual scope (Category 8).
+During polishing:
 
-### Academic Safety Guard (强制规则)
+- Keep each citation attached to the claim it supports.
+- Preserve reference commands and targets, labels, mathematical statements,
+  algorithms, code, and other non-prose environments.
+- Preserve the meaning and target of each caption. Caption rewriting or
+  layout changes follow the requested scope and figures-and-tables.md.
+- Keep established terminology, values, units, comparisons, and effective
+  qualifiers. Do not introduce studies, findings, or references from memory.
 
-在学术论文链路中做 de-AI / 润色时：
+During authorized restructuring, text and citations can move together.
+Recheck cross-references and the new context; changing organization does not
+authorize changing mathematical or empirical meaning. During requested
+LaTeX work, alter only the relevant structures and verify the rendered result.
 
-1. **禁止新增事实**：不添加任何原文未包含的研究、统计数据或引用。
-2. **禁止第一人称**：不使用 I/we（除非原文已有且符合会议惯例）。
-3. **禁止幽默/个性化**：不加入 humor、edge、personality（general text 的 voice 建议在学术链路整体失效）。
-4. **编辑范围**：删除 AI 模式痕迹、改善句式节奏、去除模板化表达；删除仍受信息守恒约束，只删零信息模式，承载论点或证据的句子改句形不删内容。
-5. **Voice 边界**：参照 claim calibration 规则与 `personal-style-profile.md`。
+## Verification and delivery
 
-### Preservation Rules (non-negotiable)
+Read the edited result against the input and the requested operation.
+Check factual and logical preservation, citation-to-claim alignment,
+cross-references, and any non-prose content affected by the task.
+Use the pattern catalog only to guide this reading.
 
-1. **Citations**: every `\cite{...}` stays in place, attached to its original semantic context; never move a citation to a different claim.
-2. **Non-prose environments**: do not modify anything inside math, float, algorithm, or code environments (`equation`, `align`, `figure`, `table`, `algorithm`, `lstlisting`, ...). Prose environments (`abstract`, theorem statement wording, list items) are body text and follow normal editing rules.
-3. **LaTeX commands**: do not alter `\ref{}`, `\label{}`, `\cref{}`, `\autoref{}`, `\eqref{}`, or structural commands.
-4. **Figure/table references**: do not alter cross-references. During de-AI passes keep each caption's meaning and target intact; rewriting a caption is its own task and follows `figures-and-tables.md` caption standards.
-5. **Technical terminology**: do not expand abbreviations or change established terminology.
+When feedback corrects facts, meaning, argument, or structure, apply Core Rule
+7 within the authorized scope: inventory the evidence, conditions, reasoning,
+examples, details, and author stance that must survive; compare the inventory
+with the original for each affected paragraph or section, then rewrite the
+affected content and check the result against the source. For substantive
+correction of long passages or repeated substantive corrections, read
+long-form-humanize.md and regenerate
+the affected portions in a clean context carrying the confirmed requirements,
+retained content, and original evidence. Inspect analogous passages and
+adjacent transitions for the same issue; repair instances within scope and
+report any needed extension. Explicit narrow additions or deletions preserve
+unrelated text. A request to reduce detail can call for selecting fewer
+information units; smoother language calls for clearer expression of the
+retained units.
 
-### Rhythm refinement
+Return the requested text, file, or diff. For a short LaTeX passage with no
+specified output format, the existing quick-pass form is the revised LaTeX,
+a Chinese translation, and a brief modification note. If the user asks only
+for the revised passage, return only that passage. Preserve a passage that
+already meets the request.
 
-- Sentence length variation: mix short (5-12 words), medium (13-22), and long (23-35) sentences; avoid 3+ consecutive sentences of similar length.
-- Paragraph length variation: short (2-3 sentences) for emphasis or transitions, medium (4-5) for standard exposition, long (6-8) for complex arguments.
-- Filler removal: "in order to" → "to"; "due to the fact that" → "because"; "in the context of" → "in"/"for"; "a large number of" → "many"; "at the present time" → "now"; "for the purpose of" → "to". "It is worth noting that" 后接具体发现/对比/数据则保留，后接空泛 claim 则删。
-- Prefer active voice; replace vague verbs ("shows", "does", "works") with concrete ones; avoid repeated sentence openings across adjacent sentences; replace hedge stacks ("may potentially") with one qualifier.
+## Supporting references
 
-### Transition calibration
-
-Sentence-initial connectives (However, Moreover, Thus, Further, Finally) are NOT an AI marker in academic prose; accepted native-written papers use them densely. Do not strip them by default. Remove only:
-
-- "As mentioned above," / "As previously discussed," (pure back-reference filler)
-- "It should be noted that" / "In this regard," (meta-phrases)
-- A connective restating a relationship the sentence structure already makes explicit
-
-### Per-section processing + verification
-
-Process one section at a time: read fully → identify all `\cite{...}` and their claims → apply catalogs + rhythm + filler removal → verify before finalizing:
-
-- [ ] Citation count unchanged; each citation still supports its original claim
-- [ ] No 3+ consecutive sentences of similar length; paragraph lengths vary
-- [ ] Back-reference filler and meta-phrases eliminated (normal connectives kept)
-- [ ] Technical accuracy preserved; no non-prose environments or cross-references modified
-- [ ] Information conservation: nothing the reader needed to know was deleted
-
-### Short-Text Quick Pass
-
-当输入为一小段英文 LaTeX（非全文）且用户要求"去 AI 味"时，自动启用。输出格式（零多余文本）：
-
-- Part 1 [LaTeX]：重写后代码（已足够好则保留原文）
-- Part 2 [Translation]：中文直译
-- Part 3 [Modification Log]：修改说明或"[检测通过] 原文表达地道自然，无明显 AI 味，建议保留。"
-
-额外约束：严禁列表格式，转为连贯段落；移除机械连接词（back-reference 填充与 meta 短语，句首正常连接词不算）；禁用加粗/斜体强调；保持 LaTeX 纯净，保留数学公式；宁缺毋滥，已自然的文本直接判定"检测通过"；高频 AI 词判定参照 `patterns-english.md` 的高频词表（触发器不是判决书）。
-
-## Key references (quick links)
-
-### Style and structure
-- `references/personal-style-profile.md` (个人默认写作风格；所有起草/改写默认按它执行)
-- `references/related-work-writing-notes.md` (相关工作写作学习笔记；写新论文前先读对应条目并模仿)
-- `references/narrative-flow-playbook.md` (承重因果链 + Bridge test)
-- `references/icml2026-writing-requirements.md` (optional: ICML-flavored constraints; treat as reference, not strict policy)
-- `references/paper-voice-contract.md` (generator voice anti-patterns shared across skills)
-
-### Section playbooks
-- `references/abstract-playbook.md`
-- `references/introduction-playbook.md`
-- `references/related-work-playbook.md`
-- `references/method-playbook.md`
-- `references/experiments-playbook.md`
-- `references/conclusion-impact-playbook.md`
-- `references/appendix-playbook.md` (appendix organization)
-
-### LaTeX and formatting
-- `references/equations-and-notation.md`
-- `references/definitions-theorems-playbook.md` (formal environments)
-- `references/figures-and-tables.md`
-- `references/latex-project-structure.md`
-- `references/citation-and-bibtex.md`
-
-### Templates and assets
-- `assets/latex-snippets.tex` (copy/paste LaTeX patterns)
-- `assets/macro-template.tex` (macro.tex starter template)
-- `assets/claim-evidence-map.md`
-- `assets/icml-8page-outline.md`
+The required personal-style-profile.md supplies the default paper voice;
+related-work-writing-notes.md provides examples of how papers develop their
+arguments. Section guidance is in abstract-playbook.md,
+introduction-playbook.md, related-work-playbook.md, method-playbook.md,
+experiments-playbook.md, conclusion-impact-playbook.md, and
+appendix-playbook.md. Citation handling is in citation-and-bibtex.md.

@@ -4,7 +4,7 @@
 
 ## Usage criteria (read first)
 
-This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is encyclopedia prose. Every "After" below is shorter than its "Before", but brevity is a side effect, not the goal: these rewrites delete zero-information filler and replace vague wording with concrete facts. Three guards:
+This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is encyclopedia prose. Use it to locate expression problems in the actual text. The revisions preserve the information supplied in each example; where the input has no substantive content, the action is to remove the wrapper or resolve the missing context. Three guards:
 
 - Information conservation precedes pattern matching: if deleting a sentence would leave the reader knowing less, it is not filler. Rewriting direction is "swap in the specific" or "delete the zero-information", never "make it shorter".
 - The "swap vague for specific" moves in these examples are legal only when the concrete fact already exists in the source or context. Never invent facts; with nothing to swap in, keep the information and only adjust the wording.
@@ -20,7 +20,7 @@ This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is e
 > The Statistical Institute of Catalonia was officially established in 1989, marking a pivotal moment in the evolution of regional statistics in Spain. This initiative was part of a broader movement across Spain to decentralize administrative functions and enhance regional governance.
 
 **After**:
-> The Statistical Institute of Catalonia was established in 1989 to collect and publish regional statistics independently from Spain's national statistics office.
+> The Statistical Institute of Catalonia was established in 1989 as part of Spain's efforts to decentralize administrative functions and strengthen regional governance.
 
 ---
 
@@ -32,7 +32,7 @@ This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is e
 > Her views have been cited in The New York Times, BBC, Financial Times, and The Hindu. She maintains an active social media presence with over 500,000 followers.
 
 **After**:
-> In a 2024 New York Times interview, she argued that AI regulation should focus on outcomes rather than methods.
+> Her views have been cited by The New York Times, BBC, Financial Times, and The Hindu. She is active on social media and has more than 500,000 followers.
 
 ---
 
@@ -40,13 +40,13 @@ This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is e
 
 **Words to watch**: highlighting/underscoring/emphasizing..., ensuring..., reflecting/symbolizing..., contributing to..., cultivating/fostering..., encompassing..., showcasing...
 
-**Academic camouflage variants**（躲过吹捧词过滤器，因为长得像正经 hedge）: ", indicating that...", ", suggesting that...", ", demonstrating that...", ", revealing...", ", enabling...", ", supporting...", ", showing that...". 每节出现一次是正常学术 hedge，扎堆出现才是 AI 信号。修法不是删解读，是改句形：在数字或具体实例处断句，另起一个平实短句作解读（"This may be because...", "It demonstrates that..."），不挂在数据句后面当分词尾巴。详见 `paper-voice-contract.md` Category 7。
+**Academic variants to inspect**: ", indicating that...", ", suggesting that...", ", demonstrating that...", ", revealing...", ", enabling...", ", supporting...", ", showing that...". 判断后半句是否提供证据支持的具体解释，以及反复使用同一结构是否影响阅读。把观察与解释分句可以使关系更清楚；已经清楚的附加分句可以保留。调整句形时保留实际解释与不确定程度，"This may be because..." 和 "It demonstrates that..." 不能当作含义等价的措辞替换。详见 `paper-voice-contract.md` Category 7。
 
 **Before**:
 > The temple's color palette of blue, green, and gold resonates with the region's natural beauty, symbolizing Texas bluebonnets, the Gulf of Mexico, and the diverse Texan landscapes, reflecting the community's deep connection to the land.
 
 **After**:
-> The temple uses blue, green, and gold colors. The architect said these were chosen to reference local bluebonnets and the Gulf coast.
+> The temple's blue, green, and gold colors symbolize Texas bluebonnets, the Gulf of Mexico, and other local landscapes.
 
 ---
 
@@ -55,10 +55,10 @@ This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is e
 **Words to watch**: boasts a, vibrant, rich (figurative), profound, enhancing its, showcasing, exemplifies, commitment to, natural beauty, nestled, in the heart of, groundbreaking (figurative), renowned, breathtaking, must-visit, stunning
 
 **Before**:
-> Nestled within the breathtaking region of Gonder in Ethiopia, Alamata Raya Kobo stands as a vibrant town with a rich cultural heritage and stunning natural beauty.
+> Nestled within the breathtaking region of Tuscany, the village stands as a vibrant community with a rich cultural heritage and stunning natural beauty.
 
 **After**:
-> Alamata Raya Kobo is a town in the Gonder region of Ethiopia, known for its weekly market and 18th-century church.
+> The village is in Tuscany and has local cultural heritage and natural scenery.
 
 ---
 
@@ -70,7 +70,9 @@ This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is e
 > Due to its unique characteristics, the Haolai River is of interest to researchers and conservationists. Experts believe it plays a crucial role in the regional ecosystem.
 
 **After**:
-> The Haolai River supports several endemic fish species, according to a 2019 survey by the Chinese Academy of Sciences.
+> The Haolai River interests researchers and conservationists. Experts consider it important to the regional ecosystem.
+
+The attribution remains unresolved. Identifying the experts and their evidence requires source material beyond this input.
 
 ---
 
@@ -82,7 +84,7 @@ This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is e
 > Despite its industrial prosperity, Korattur faces challenges typical of urban areas, including traffic congestion and water scarcity. Despite these challenges, with its strategic location and ongoing initiatives, Korattur continues to thrive as an integral part of Chennai's growth.
 
 **After**:
-> Traffic congestion increased after 2015 when three new IT parks opened. The municipal corporation began a stormwater drainage project in 2022 to address recurring floods.
+> Korattur has a prosperous industrial sector but faces traffic congestion and water scarcity.
 
 ---
 
@@ -96,7 +98,7 @@ This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is e
 > Additionally, a distinctive feature of Somali cuisine is the incorporation of camel meat. An enduring testament to Italian colonial influence is the widespread adoption of pasta in the local culinary landscape, showcasing how these dishes have integrated into the traditional diet.
 
 **After**:
-> Somali cuisine also includes camel meat, which is considered a delicacy. Pasta dishes, introduced during Italian colonization, remain common, especially in the south.
+> Somali cuisine includes camel meat. Pasta is also widely eaten, reflecting Italian colonial influence.
 
 ---
 
@@ -108,7 +110,7 @@ This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is e
 > Gallery 825 serves as LAAA's exhibition space for contemporary art. The gallery features four separate spaces and boasts over 3,000 square feet.
 
 **After**:
-> Gallery 825 is LAAA's exhibition space for contemporary art. The gallery has four rooms totaling 3,000 square feet.
+> Gallery 825 is LAAA's exhibition space for contemporary art. The gallery has four separate spaces totaling more than 3,000 square feet.
 
 ---
 
@@ -118,7 +120,7 @@ This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is e
 > It's not just about the beat riding under the vocals; it's part of the aggression and atmosphere. It's not merely a song, it's a statement.
 
 **After**:
-> The heavy beat adds to the aggressive tone.
+> The beat beneath the vocals contributes to the song's aggressive atmosphere.
 
 ---
 
@@ -128,7 +130,7 @@ This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is e
 > The event features keynote sessions, panel discussions, and networking opportunities. Attendees can expect innovation, inspiration, and industry insights.
 
 **After**:
-> The event includes talks and panels. There's also time for informal networking between sessions.
+> The event includes keynote talks, panel discussions, and networking opportunities.
 
 ---
 
@@ -148,7 +150,7 @@ This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is e
 > Our journey through the universe has taken us from the singularity of the Big Bang to the grand cosmic web, from the birth and death of stars to the enigmatic dance of dark matter.
 
 **After**:
-> The book covers the Big Bang, star formation, and current theories about dark matter.
+> We discuss the Big Bang, the cosmic web, the birth and death of stars, and dark matter.
 
 ---
 
@@ -170,7 +172,7 @@ This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is e
 > It blends **OKRs (Objectives and Key Results)**, **KPIs (Key Performance Indicators)**, and visual strategy tools such as **Business Model Canvas (BMC)** and **Balanced Scorecard (BSC)**.
 
 **After**:
-> It blends OKRs, KPIs, and visual strategy tools like Business Model Canvas and Balanced Scorecard.
+> It blends OKRs (Objectives and Key Results), KPIs (Key Performance Indicators), and visual strategy tools such as Business Model Canvas (BMC) and Balanced Scorecard (BSC).
 
 ---
 
@@ -182,7 +184,7 @@ This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is e
 > - **Security:** Security has been strengthened with end-to-end encryption.
 
 **After**:
-> The update improves the interface, speeds up load times through optimized algorithms, and adds end-to-end encryption.
+> The update improves the interface and algorithm performance, and strengthens security through end-to-end encryption.
 
 ---
 
@@ -204,7 +206,7 @@ This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is e
 > ✅ **Next Steps:** Schedule follow-up meeting
 
 **After**:
-> The product launches in Q3. User research showed a preference for simplicity. Next step: schedule a follow-up meeting.
+> The product launches in Q3. Users prefer simplicity. Next step: schedule a follow-up meeting.
 
 ---
 
@@ -227,8 +229,8 @@ This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is e
 **Before**:
 > Here is an overview of the French Revolution. I hope this helps! Let me know if you'd like me to expand on any section.
 
-**After**:
-> The French Revolution began in 1789 when financial crisis and food shortages led to widespread unrest.
+**Action**:
+Remove this conversational wrapper. It supplies no substantive historical passage to rewrite.
 
 ---
 
@@ -240,7 +242,7 @@ This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is e
 > While specific details about the company's founding are not extensively documented in readily available sources, it appears to have been established sometime in the 1990s.
 
 **After**:
-> The company was founded in 1994, according to its registration documents.
+> The company appears to have been established sometime in the 1990s; the available information does not give a precise date.
 
 ---
 
@@ -284,8 +286,8 @@ This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is e
 **Before**:
 > The future looks bright for the company. Exciting times lie ahead as they continue their journey toward excellence. This represents a major step in the right direction.
 
-**After**:
-> The company plans to open two more locations next year.
+**Action**:
+Remove the generic positive conclusion. No concrete future plan is supplied in the input.
 
 ---
 
@@ -299,7 +301,7 @@ This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is e
 > Think of the API gateway as a traffic cop directing requests, a bridge between services, the beating heart of the architecture.
 
 **After**:
-> The API gateway routes each request to the matching service and rejects ones that fail authentication.
+> The API gateway directs requests between services.
 
 ---
 
@@ -313,7 +315,7 @@ This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is e
 > Then AlphaEvolve arrived. No symmetry preference. No aesthetic priors. The old rules stopped working.
 
 **After**:
-> AlphaEvolve has no preference for symmetry or human aesthetics, so the old rules no longer fully apply.
+> AlphaEvolve arrived with no preference for symmetry or human aesthetics. The old rules stopped working.
 
 ---
 
@@ -326,8 +328,8 @@ This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is e
 **Before**:
 > Symmetry is the language of trust. Optimize processes too hard and efficiency becomes a trap.
 
-**After**:
-> Symmetric layouts usually feel more predictable to users. Teams that over-optimize processes tend to overlook how people actually work.
+**Action**:
+Use the supplied context to identify what symmetry, trust, and efficiency refer to, then state the actual relationship. If that context is missing, flag the ambiguity instead of inventing a psychological effect or failure mechanism.
 
 ---
 

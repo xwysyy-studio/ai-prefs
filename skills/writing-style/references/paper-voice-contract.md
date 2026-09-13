@@ -12,7 +12,7 @@ Ensure consistent, human-sounding academic prose by identifying and eliminating 
 
 | Anti-Pattern | Example (BAD) | Fix (GOOD) |
 |---|---|---|
-| Announcing intent | "In this section, we will discuss the methodology we employ to address this challenge." | "We formulate the problem as a constrained optimization over..." |
+| Announcing intent | "In this section, we will discuss the methodology we employ to address this challenge." | Start with the method actually described in the supplied material; remove the announcement. |
 | Meta-guidance | "It is important to note that..." / "It should be emphasized that..." | Delete the meta-phrase; let the content speak for itself. |
 | Roadmap filler | "The remainder of this paper is organized as follows. Section 2 presents... Section 3 describes..." | Use a 1-sentence roadmap only if non-obvious; otherwise delete. |
 | Self-narration | "We now turn our attention to..." / "Having established X, we proceed to Y." | Start directly with the content of Y. |
@@ -24,8 +24,8 @@ Ensure consistent, human-sounding academic prose by identifying and eliminating 
 | Anti-Pattern | Example (BAD) | Fix (GOOD) |
 |---|---|---|
 | Hollow openers | "In recent years, X has attracted significant attention..." | State the specific finding or gap directly. |
-| Generic importance | "X plays a crucial role in..." / "X is of paramount importance..." | Quantify or specify: "X reduces latency by 40% in..." |
-| False novelty | "To the best of our knowledge, this is the first..." | Scope precisely: "Among methods tested on benchmark Y, ours is the first to..." |
+| Generic importance | "X plays a crucial role in..." / "X is of paramount importance..." | State the actual role supported by the material; use a measured effect only when its number and conditions are supplied. |
+| False novelty | "To the best of our knowledge, this is the first..." | State the contribution and its verified comparison scope. Retain a priority claim only when the evidence supports it. |
 | AI vocabulary | "delve into", "landscape", "tapestry", "paradigm shift", "nuanced", "multifaceted", "underscores" | Replace with precise, concrete terms. |
 
 ### Category 3: Hedge Stacking (excessive qualification)
@@ -33,8 +33,8 @@ Ensure consistent, human-sounding academic prose by identifying and eliminating 
 | Anti-Pattern | Example (BAD) | Fix (GOOD) |
 |---|---|---|
 | Triple hedge | "It could potentially perhaps improve..." | Choose one appropriate hedge or state directly. |
-| Weasel attribution | "Some researchers have suggested that..." | Cite specifically: "Chen et al. (2024) showed that..." |
-| Vague improvement | "Our method achieves better results." | "Our method improves F1 by 3.2 points (Table 2)." |
+| Weasel attribution | "Some researchers have suggested that..." | Identify the authors from the actual source while retaining the strength of "suggested"; flag the missing attribution if the source does not identify them. |
+| Vague improvement | "Our method achieves better results." | Identify the metric, comparison, and result in the supplied evidence; retain the current claim or flag the missing detail if that evidence is unavailable. |
 
 ### Category 4: Symmetry Addiction (forced parallelism and balance)
 
@@ -57,36 +57,36 @@ Ensure consistent, human-sounding academic prose by identifying and eliminating 
 | Anti-Pattern | Example (BAD) | Fix (GOOD) |
 |---|---|---|
 | Overclaiming | "revolutionizes", "groundbreaking", "transformative" | Use calibrated language: "improves", "addresses", "reduces" |
-| Scope inflation | "This work has broad implications for all of machine learning." | "This result applies to autoregressive models on text generation tasks." |
+| Scope inflation | "This work has broad implications for all of machine learning." | State the evaluated models, tasks, or settings supplied by the evidence. Do not invent a narrower setting. |
 | Unbounded promise | "This opens up exciting new avenues for future research." | Either specify the avenue or delete. |
 
 ### Category 7: Syntactic Over-Elaboration (academic camouflage)
 
-When the vocabulary bans above are enforced, generator residue migrates into syntax: constructions that read as "analytical" but are statistical filler in grammatical form. Calibration source: the user's own two accepted ML-benchmark papers, one written natively (3 participial analytical tails, 0 uses of "reveal") and one AI-assisted (11 and 12). The frequency rule below is a heuristic calibrated on ML/CS academic prose, not a universal law; in other registers, judge by ear. Heuristic: one ", suggesting that ..." per section is normal academic hedging; three or more clustered is a rewrite signal.
+Calibration source: the user's own two accepted ML-benchmark papers, one written natively (3 participial analytical tails, 0 uses of "reveal") and one AI-assisted (11 and 12). These observations help locate repetitive expression in similar prose; they do not establish authorship or a permitted frequency. Read what each clause contributes, whether its relation to the result is supported, and whether the repeated construction makes the passage harder to follow.
 
 | Anti-Pattern | Example (BAD) | Fix (GOOD) |
 |---|---|---|
-| Participial analytical tail | "...rises from 0.367 in pass@1 to 0.597 in pass@5, indicating that additional attempts often recover a correct solution by exploring alternative approaches and interaction strategies." | End the sentence at the number or named instance. If interpretation is needed, start a NEW plain sentence: "This may be because additional attempts explore alternative interaction strategies." |
-| Abstract nominal subject | "This long-horizon bookkeeping amplifies small update mistakes over many rounds." | Concrete subject + verb: "The solver must update its state after every reply, so small mistakes compound over rounds." |
-| Stacked infinitival/prepositional tails | "This reflects the need to acquire information from an initially unrevealed structure under strict query budgets, and to track state under partial observability." | Split into short clauses: "Graph tasks hide the structure. The model must query it under a tight budget and track what it learns." |
+| Participial analytical tail | "...rises from 0.367 in pass@1 to 0.597 in pass@5, indicating that additional attempts often recover a correct solution by exploring alternative approaches and interaction strategies." | If separating the observation and interpretation clarifies their relationship, end the first sentence at the result and give the supported interpretation in a plain sentence. Preserve its uncertainty and basis; the proposed mechanism needs support in the source. |
+| Abstract nominal subject | "This long-horizon bookkeeping amplifies small update mistakes over many rounds." | "Small update mistakes become more consequential over many rounds of bookkeeping." |
+| Stacked infinitival/prepositional tails | "This reflects the need to acquire information from an initially unrevealed structure under strict query budgets, and to track state under partial observability." | "The task requires discovering information about an initially hidden structure within a strict query budget. It also requires tracking state from partial observations." |
 | Pseudo-analytical verb tic | "reveal(s)" as the default verb for every result | Rotate plain verbs (shows, gives, yields) or state the finding directly. |
 
-The aloud test: if the tail could attach to any result in any paper of the genre, it is filler. Native glosses take the form of a fresh short sentence: "It demonstrates that ...", "This may be because ...", "We believe that ...".
+Check whether the clause adds a specific supported interpretation. A separate sentence can make that interpretation easier to follow; a clear attached clause can remain. Phrases such as "It demonstrates that ...", "This may be because ...", and "We believe that ..." express different evidence relationships and are not interchangeable style variants.
 
 ### Category 8: Defensive Claim Posture (author stance in place of factual scope)
 
-This pattern wraps the evidence boundary in statements about what the authors claim, attempt, or permit themselves to conclude. The wrapper adds a defensive posture while hiding the useful facts one level deeper.
+This pattern adds a defensive wrapper around a result or its scope without contributing evidence or meaning. It applies when the same proposition can be stated directly with its attribution, evidence strength, and boundaries intact. An author's interpretation, hypothesis, uncertainty, or disagreement carries meaning and is not a removable wrapper merely because it uses first person.
 
 | Anti-Pattern | Example (BAD) | Fix (GOOD) |
 |---|---|---|
 | Claim denial | "We do not claim that the method is generally effective." | State the evaluated scope and result directly. |
-| Self-limiting contribution | "Our contribution is limited to showing a 6-point gain under a 2,000-token budget." | "Under a 2,000-token budget, the method improves exact-match accuracy by 6 points." |
-| Scope narration | "We confine our effectiveness claim to two of the three datasets." | "The method improves exact-match accuracy on two of the three evaluated datasets." |
+| Self-limiting contribution | "Our contribution is limited to showing a 6-point gain under a 2,000-token budget." | "Under a 2,000-token budget, the method achieves a 6-point gain." Specify the metric when it is supplied by the context. |
+| Scope narration | "We confine our effectiveness claim to two of the three datasets." | State the observed result on those datasets using the supplied metric and comparison. Preserve what the third dataset establishes and the original strength of the effectiveness claim. |
 | Defensive contrast | "The method is not generally superior; rather, it only helps in low-budget settings." | "Across the evaluated settings, [state the observed overall result]. Under low-budget settings, the method improves [metric] by [value]." |
 
-Before repairing the prose, determine whether the denied proposition summarizes an observed failure, negative result, or counterexample. Preserve real counterevidence as a direct factual result and use it to narrow the claim or revisit the paper story. Only the author-stance wrapper is removable.
+Before repairing the prose, determine whether the passage carries an observed failure, negative result, counterexample, or an author's judgment about the evidence. Preserve real counterevidence as a direct factual result and use it to narrow the claim or revisit the paper story. Preserve the distinction between that result and its interpretation.
 
-Repair procedure: extract the object, condition, metric, number, and every observed result, including negative results; write those facts as subject, action, condition, and result. Do not preserve the author's claim posture as a "qualifier." A qualifier limits the proposition itself (for example, "on two of three datasets" or "under a 2,000-token budget"); a sentence about what the authors do not claim merely narrates their stance.
+Repair procedure: identify the observation, its source and conditions, and any interpretation or uncertainty expressed in the original. Write the supported result directly and keep the interpretation at its original strength. Remove a stance phrase only when the remaining sentence preserves who is making the judgment and what the evidence establishes. If a direct rewrite would turn a belief into a finding or a possible explanation into a mechanism, retain or rephrase the epistemic qualification. Conditions such as "on two of three datasets" and "under a 2,000-token budget" remain attached to the proposition.
 
 Carve-out: a rebuttal or a passage responding to an objection already present in a review, cited source, or reader-visible text may need a direct denial. Ordinary manuscript positioning and conclusions do not.
 
@@ -94,27 +94,33 @@ Carve-out: a rebuttal or a passage responding to an objection already present in
 
 When reviewing text for voice contamination:
 
-1. **Scan** each paragraph for patterns from the 8 categories above
-2. **Tag** each instance with its category (e.g., `[PLANNER_TALK]`, `[TEMPLATE_STEM]`, `[HEDGE_STACK]`, `[SYMMETRY]`, `[CITATION_CONTAM]`, `[GRANDIOSE]`, `[SYNTAX_ORNATE]`, `[DEFENSIVE_POSTURE]`)
-3. **Severity**: Category 5, unsupported Category 6, and Category 8 each require a local fix even when only one instance appears. For Categories 1-4 and 7, use density to choose the repair scope:
-   - 0-1 per 500 words: isolated (fix only when it reduces clarity or violates the quality gate)
-   - 2-3 per 500 words: light contamination (local fixes)
-   - 4+ per 500 words: heavy contamination (paragraph rewrite recommended)
-4. **Fix**: Apply the corresponding fix from the table. Deletion is for zero-information filler only; a sentence that carries real content gets re-shaped, not removed (information conservation, see writing-style `SKILL.md` 全局守卫)
+Read the passage in context and identify the concrete problem in meaning,
+clarity, unsupported framing, or repetition. For an audit, report its location,
+quoted wording, and relevant category, such as `[PLANNER_TALK]`,
+`[TEMPLATE_STEM]`, `[HEDGE_STACK]`, `[SYMMETRY]`, `[CITATION_CONTAM]`,
+`[GRANDIOSE]`, `[SYNTAX_ORNATE]`, or `[DEFENSIVE_POSTURE]`.
+
+Choose repair scope from the problem's effect on the reader and the authorized
+operation. A wrong citation or unsupported claim matters even once; repeated
+wording matters when it obscures the argument or makes the prose mechanical.
+Keep valid terminology and useful variation. Delete only empty wording;
+reshape sentences that carry content while preserving that content and its
+evidence strength. In audit-only tasks, report without editing.
 
 ## Integration Points
 
-### writing-style（英文层）
-- Apply this contract during `references/style-apply.md` Workflow B (rewrite), Workflow D (final polish), and all de-AI passes
-- Categories 1-4, 7, and 8 are primary targets; Categories 5-6 are secondary
-- Use the diagnosis protocol as a pre-check before style application; preserve all \cite{}, \ref{}, and non-prose environments while fixing voice (see style-apply.md Preservation Rules)
+### writing-style（学术写作）
+- Apply this contract to expression problems within the drafting, polishing, and restructuring tasks defined in `references/style-apply.md`
+- Use the categories relevant to the actual passage; citation integrity and evidence strength remain required in every task
+- Use the diagnosis protocol to locate expression problems; during polishing preserve citation-to-claim relationships, cross-references, and non-prose environments. During authorized restructuring, citations move with the claims they support (see style-apply.md Preservation Rules).
 
-## Voice Quality Gate
+## Verify the revised passage
 
-A paragraph passes the voice gate if:
-- Zero Category 5 (Citation Contamination) instances
-- Zero Category 6 (Grandiose Framing) instances for claims without evidence
-- Zero Category 8 (Defensive Claim Posture) instances unless the sentence responds to a reader-visible objection
-- ≤1 instance from Categories 1-4 per 300 words
-- No 3+ clustered Category 7 instances in one section (isolated instances are acceptable academic hedging)
-- No consecutive sentences starting with the same template stem
+Compare the revision with the source and the requested task. Citations must
+support their attached claims; conditions, negative findings, author judgments,
+and uncertainty must remain accurate. Compare observations and interpretations
+separately so that removing a wrapper does not strengthen either. Position the work through factual scope, preserving a
+direct denial only when it responds to a reader-visible objection. Read the
+argument for complete relationships and useful explanation. Counts and
+category labels help locate passages; the actual content and readability
+determine whether another edit is needed.

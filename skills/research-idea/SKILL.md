@@ -1,14 +1,10 @@
 ---
 name: research-idea
 description: >-
-  研究 idea 生命周期统一入口：站在写论文的人的视角，从模糊方向挖一个 make sense 的 paper story。
-  说不清就发散挖故事，故事没把握就写 brief 交外部补，故事成形就窄口径判生死。
-  Triggers: 帮我想 idea, 没有 idea, 找研究方向, brainstorm research directions, 研究选题,
-  seed brief, 调研文档, 给 GPT/Codex 调研, prior work brief, 研究构想 brief, proposal draft,
-  评估 idea, 这个 idea 怎么样, 值不值得做, 可行性评估, novelty check, is this idea worth.
-default_mode: ask_first
-write_policy: after_confirm
-owner: academic
+  Develop research ideas into a clear paper story through open exploration,
+  external research briefs, and focused novelty or viability evaluation. Use for
+  research direction selection and idea assessment. Develop a settled manuscript
+  with writing-style; surveys and collected-paper comparisons use survey.
 allowed-tools: [Read, Edit, Write, Grep, Glob, WebSearch, WebFetch, AskUserQuestion]
 ---
 
@@ -23,6 +19,7 @@ allowed-tools: [Read, Edit, Write, Grep, Glob, WebSearch, WebFetch, AskUserQuest
 - **复杂是降级，不是严谨。** 指标一旦开始堆参数、要靠一堆消融才解释得清，多半说明那个简单的 idea 还没找到，只好拿参数去凑。简单实现不了，才退而求其次上复杂。
 - **被尊重的概念是标签，不是合同。** 一个被领域尊重的理论名词，往往只是用来让审稿人秒懂的标签；底层计算取能撑住 claim 的最简形式就够，claim 不依赖那套理论，就别把整套理论实现一遍。
 - **要的是思想的迸发，不是参数工程。**
+- **AI 缺 taste，不做全自动科研。** 本技能是研究者手里的工具，不是接管选题、实验和写作的端到端管线；提科研工具方案时守住这条线。
 - **论文是讲给审稿人的叙事，不是说明文。** 不是产品文档，也不是内部迭代记录。claim 口径两头都别贴：不过度声明（说"补缺失维度"而不说"更难"，说"沙盒"而不说"替代"），也不必过分谨慎。目标是把故事讲圆润，不引发不必要的误解，同时让自己的特色和洞察露出来。
 
 ## 生成动作

@@ -1,6 +1,6 @@
 # Personal style profile（个人默认写作风格）
 
-用户的默认写作风格，起草和改写一律按它执行，除非用户另有指定。谱系：从用户自己已中稿的 ICML 论文提炼，并持续吸收相关工作中验证过的措辞与手法（吸收入口见 `related-work-writing-notes.md`：写作时模仿相关工作，完稿后把值得保留的蒸馏到这里）。
+用户的默认论文写作风格，在论文任务需要语气校准时结合当前要求和认可样稿使用。材料来自用户已中稿的 ICML 论文及实读相关工作，以下结构与句式按其适用条件参考。更新时同时比较原稿、用户保留的内容和最终改法，确认哪些偏好能跨任务使用；领域特定的叙事方法保留在 `related-work-writing-notes.md`。
 
 ## 1) Voice and tone
 
@@ -10,19 +10,19 @@
   - Bounded: “suggest”, “indicate”, “in our setting”, “under the following assumptions”
 - Position the paper positively: state what the work studies, proposes, measures, and contributes. When comparing related work, name the prior work's concrete coverage or gap first; never seed an unraised objection or negate a possible claim about the present work.
 - Use `\emph{...}` to emphasize **one key phrase**, not to decorate.
-- **Lecture-style flow**: sentence-initial connectives used freely and densely (However / Moreover / Further / Thus / Instead / Finally), plus conversational moves: “A natural next question is …”, “Note that …”, “Recall that …”, “We remark that …”, “Consider an example …”. This chattiness is the house voice; do not strip it toward cold nominalized prose.
+- **Explanatory flow**: use connectives such as However, Moreover, and Thus when they express an actual relationship. Phrases such as “Recall that …” or “Consider an example …” can help readers follow a technical argument when a recall or example is needed. Keep the default voice plain and direct, with the necessary explanation intact.
 - An interrogative research question that names the open problem is a legitimate device (“Can we … using fully synthetic data?”); only writing-plan announcements are banned.
 
 ## 2) “Hook → gap → contributions” rhythm
 
-The intro follows a strong ICML rhythm:
+An introduction in the reference ICML papers performs these functions. Adapt their order and space to the current argument:
 
 1. Context: why the area matters.
 2. State of the art: what exists and what it measures.
 3. Gap: what is missing (one crisp sentence).
 4. Why it matters: consequences of the gap (often with a motivating example).
 5. Challenges/limitations: a short bullet list with bolded heads.
-6. Contributions: explicit, numbered, titled, and aligned to the challenges.
+6. Contributions: explicit and connected to the problem and evidence; use numbering and titles when they help the reader.
 
 ## 3) Contribution blocks (high signal)
 
@@ -62,7 +62,7 @@ This is reviewer-friendly and compresses well into 8 pages.
 **Result narration shape: number, instance, then a fresh sentence.**
 
 - State the number, then a named concrete instance, then stop: “One exception is Llama-3.1-8B, which has the time-only dual@10 of 0.244, slightly smaller than the space-only dual@10 of 0.248.”
-- If interpretation is needed, start a NEW short plain sentence: “It demonstrates that …”, “This may be because …”, “We believe that …”. Never hang the interpretation off the data sentence as a participial tail (“…, indicating that …”); see `paper-voice-contract.md` Category 7.
+- A separate plain sentence often helps distinguish an observation from its interpretation. Preserve a clear attached clause when it already serves that relationship; see `paper-voice-contract.md` Category 7. Choose “It demonstrates that …”, “This may be because …”, or “We believe that …” only when the source supports that particular evidence relationship.
 - “significant” is fine only with a number adjacent to it.
 
 ## 6) LaTeX conventions
