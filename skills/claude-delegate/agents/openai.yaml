@@ -1,0 +1,4 @@
+interface:
+  display_name: "Claude Delegate"
+  short_description: "Delegate substantial work and inspect Claude's evidence."
+  default_prompt: "Use $claude-delegate for this task, preserving my choices and verifying the returned evidence."
