@@ -6,9 +6,9 @@
 
 This catalog descends from Wikipedia's AI-cleanup guide, whose native genre is encyclopedia prose. Use it to locate expression problems in the actual text. The revisions preserve the information supplied in each example; where the input has no substantive content, the action is to remove the wrapper or resolve the missing context. Three guards:
 
-- Information conservation precedes pattern matching: if deleting a sentence would leave the reader knowing less, it is not filler. Rewriting direction is "swap in the specific" or "delete the zero-information", never "make it shorter".
+- Information conservation precedes pattern matching. Check what the reader would lose by removing a sentence and what keeping it helps them understand or decide. Preserve the facts, reasoning, conditions, and author judgments needed for the passage's purpose. Apply SKILL.md's criteria to commentary about what the text has not covered; its presence in a draft does not by itself make it necessary. Shorter text is not the objective.
 - The "swap vague for specific" moves in these examples are legal only when the concrete fact already exists in the source or context. Never invent facts; with nothing to swap in, keep the information and only adjust the wording.
-- In technical and academic prose, explanatory sentences carry causal reasoning. A sentence that matches a pattern's surface form but carries real information gets re-shaped, not removed.
+- In technical and academic prose, explanations can carry reasoning, conditions, and interpretations. Preserve those contributions and their evidence strength when changing expression; a surface-pattern match does not justify removing them.
 
 ## CONTENT PATTERNS (内容模式)
 
@@ -243,6 +243,9 @@ Remove this conversational wrapper. It supplies no substantive historical passag
 
 **After**:
 > The company appears to have been established sometime in the 1990s; the available information does not give a precise date.
+
+Here the missing date qualifies the stated founding period. Other unverified
+details belong only where they affect the reader's question or judgment.
 
 ---
 

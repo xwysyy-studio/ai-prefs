@@ -32,6 +32,12 @@ clarity, wording, sentence flow, or redundant phrasing. Revise those problems
 and leave sound text alone. Retain the original claims, values, conditions,
 comparisons, and uncertainty.
 
+An aside about what the paper has not claimed or tested may be removed when
+it has no bearing on the passage's claims, evidence, or reader purpose.
+Apply paper-voice-contract.md Category 8 to distinguish it from a meaningful
+limitation or author judgment. A requested word-level change leaves the rest
+of the passage intact.
+
 Read patterns-english.md for the polishing pass and judge the actual sentences.
 Repeated wording can be necessary for technical precision; variation can
 improve rhythm when the

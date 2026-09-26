@@ -69,13 +69,13 @@ Calibration source: the user's own two accepted ML-benchmark papers, one written
 | Participial analytical tail | "...rises from 0.367 in pass@1 to 0.597 in pass@5, indicating that additional attempts often recover a correct solution by exploring alternative approaches and interaction strategies." | If separating the observation and interpretation clarifies their relationship, end the first sentence at the result and give the supported interpretation in a plain sentence. Preserve its uncertainty and basis; the proposed mechanism needs support in the source. |
 | Abstract nominal subject | "This long-horizon bookkeeping amplifies small update mistakes over many rounds." | "Small update mistakes become more consequential over many rounds of bookkeeping." |
 | Stacked infinitival/prepositional tails | "This reflects the need to acquire information from an initially unrevealed structure under strict query budgets, and to track state under partial observability." | "The task requires discovering information about an initially hidden structure within a strict query budget. It also requires tracking state from partial observations." |
-| Pseudo-analytical verb tic | "reveal(s)" as the default verb for every result | Rotate plain verbs (shows, gives, yields) or state the finding directly. |
+| Pseudo-analytical verb tic | "reveal(s)" as the default verb for every result | State what was measured or observed, using the verb that fits that relationship. Repetition can remain when accurate; do not rotate verbs as interchangeable style variants. |
 
 Check whether the clause adds a specific supported interpretation. A separate sentence can make that interpretation easier to follow; a clear attached clause can remain. Phrases such as "It demonstrates that ...", "This may be because ...", and "We believe that ..." express different evidence relationships and are not interchangeable style variants.
 
-### Category 8: Defensive Claim Posture (author stance in place of factual scope)
+### Category 8: Defensive Claim Posture (unnecessary self-justification)
 
-This pattern adds a defensive wrapper around a result or its scope without contributing evidence or meaning. It applies when the same proposition can be stated directly with its attribution, evidence strength, and boundaries intact. An author's interpretation, hypothesis, uncertainty, or disagreement carries meaning and is not a removable wrapper merely because it uses first person.
+This pattern adds self-justification that does not help the reader understand the subject, assess a relevant claim, or answer the task's question. It includes both author-stance wrappers and factual, impersonal accounts of what the text has not established. Check what the reader would misunderstand without the sentence; a relevant need may arise from the question or context without a separately written claim. An author's interpretation, hypothesis, uncertainty, or disagreement carries meaning and is not a removable wrapper merely because it uses first person.
 
 | Anti-Pattern | Example (BAD) | Fix (GOOD) |
 |---|---|---|
@@ -83,12 +83,13 @@ This pattern adds a defensive wrapper around a result or its scope without contr
 | Self-limiting contribution | "Our contribution is limited to showing a 6-point gain under a 2,000-token budget." | "Under a 2,000-token budget, the method achieves a 6-point gain." Specify the metric when it is supplied by the context. |
 | Scope narration | "We confine our effectiveness claim to two of the three datasets." | State the observed result on those datasets using the supplied metric and comparison. Preserve what the third dataset establishes and the original strength of the effectiveness claim. |
 | Defensive contrast | "The method is not generally superior; rather, it only helps in low-budget settings." | "Across the evaluated settings, [state the observed overall result]. Under low-budget settings, the method improves [metric] by [value]." |
+| Unrelated missing comparison | A note explaining system costs ends with "This note does not compare training stability." | Omit the sentence when stability is outside the reader's question and the passage makes no stability claim. If the reader is asking about stability, directly explain that the supplied evidence does not answer it. |
 
 Before repairing the prose, determine whether the passage carries an observed failure, negative result, counterexample, or an author's judgment about the evidence. Preserve real counterevidence as a direct factual result and use it to narrow the claim or revisit the paper story. Preserve the distinction between that result and its interpretation.
 
-Repair procedure: identify the observation, its source and conditions, and any interpretation or uncertainty expressed in the original. Write the supported result directly and keep the interpretation at its original strength. Remove a stance phrase only when the remaining sentence preserves who is making the judgment and what the evidence establishes. If a direct rewrite would turn a belief into a finding or a possible explanation into a mechanism, retain or rephrase the epistemic qualification. Conditions such as "on two of three datasets" and "under a 2,000-token budget" remain attached to the proposition.
+Repair procedure: identify the observation, its source and conditions, and any interpretation or uncertainty expressed in the original. Check which claim or reader need the explanation serves. Remove an unrelated self-protective aside when the claims, evidence, and author judgment needed by the reader remain intact; making the aside more objective is not a repair. For a relevant boundary, write the supported result directly and keep the interpretation at its original strength. Remove a stance phrase only when the remaining sentence preserves who is making the judgment and what the evidence establishes. If a direct rewrite would turn a belief into a finding or a possible explanation into a mechanism, retain or rephrase the epistemic qualification. Conditions such as "on two of three datasets" and "under a 2,000-token budget" remain attached to the proposition. When an unsupported inference is the problem, correct that inference within the authorized scope instead of leaving it in place with a disclaimer.
 
-Carve-out: a rebuttal or a passage responding to an objection already present in a review, cited source, or reader-visible text may need a direct denial. Ordinary manuscript positioning and conclusions do not.
+A direct denial may answer an objection in a review or cited source, clarify an ambiguity in the passage, or address the reader's actual question. Its value depends on that use, not on first-person wording or whether it appears in an ordinary manuscript or a rebuttal.
 
 ## Diagnosis Protocol
 
@@ -103,9 +104,11 @@ quoted wording, and relevant category, such as `[PLANNER_TALK]`,
 Choose repair scope from the problem's effect on the reader and the authorized
 operation. A wrong citation or unsupported claim matters even once; repeated
 wording matters when it obscures the argument or makes the prose mechanical.
-Keep valid terminology and useful variation. Delete only empty wording;
-reshape sentences that carry content while preserving that content and its
-evidence strength. In audit-only tasks, report without editing.
+Keep valid terminology and useful variation. Remove empty wording and
+irrelevant self-justification under Category 8's criteria; preserve the facts,
+reasoning, conditions, and evidence strength needed for the passage's purpose.
+Narrowly specified edits leave unrelated text intact. In audit-only tasks,
+report without editing.
 
 ## Integration Points
 
@@ -119,8 +122,9 @@ evidence strength. In audit-only tasks, report without editing.
 Compare the revision with the source and the requested task. Citations must
 support their attached claims; conditions, negative findings, author judgments,
 and uncertainty must remain accurate. Compare observations and interpretations
-separately so that removing a wrapper does not strengthen either. Position the work through factual scope, preserving a
-direct denial only when it responds to a reader-visible objection. Read the
+separately so that removing a wrapper does not strengthen either. Position the
+work through factual scope; qualifications and denials must serve an actual
+claim, ambiguity, or reader question. Read the
 argument for complete relationships and useful explanation. Counts and
 category labels help locate passages; the actual content and readability
 determine whether another edit is needed.

@@ -26,27 +26,27 @@ An introduction in the reference ICML papers performs these functions. Adapt the
 
 ## 3) Contribution blocks (high signal)
 
-A distinctive pattern is using `\paragraph{Contribution #i: <short title>.}` followed by 2–4 sentences:
+One pattern in the reference papers is `\paragraph{Contribution #i: <short title>.}` followed by a few sentences that cover:
 
-- Sentence 1: what it is (artifact/method/dataset/benchmark).
-- Sentence 2: what is special about it (why non-trivial).
-- Sentence 3: what it enables (evaluation / analysis / new capability).
-- Optional: a concrete scale number (tasks, datasets, models, parameters).
+- what it is (artifact/method/dataset/benchmark);
+- what is special about it (why non-trivial);
+- what it enables (evaluation / analysis / new capability);
+- optionally, a concrete scale number (tasks, datasets, models, parameters).
 
-This structure makes it easy for reviewers to locate novelty.
+Use it when it helps reviewers locate novelty; the number and order of sentences follow the contribution.
 
 ## 4) Abstract structure
 
 The abstract is:
 
 - Single paragraph
-- Many short sentences (each “does one job”)
+- Sentences that each do one job; their length follows the content
 - Built around one load-bearing sentence, the line that changes the reader's understanding; the arc follows the paper's story (see `abstract-playbook.md`, English Abstract section)
 - The usual supporting jobs: context, brief prior-work summary, gap statement, what you introduce, what’s inside the artifact (scale + properties), how you evaluate, main conclusion (qualitative and/or quantitative)
 
 ## 5) Experiments: “primary findings” + bullets
 
-Evaluation sections often become long. The house pattern:
+Evaluation sections often become long. One pattern from the reference papers, useful when the findings are parallel:
 
 - A short setup
 - Then “Our primary findings suggest that …”
@@ -55,7 +55,7 @@ Evaluation sections often become long. The house pattern:
   - A concrete comparison/example
   - Optional: a caveat
 
-This is reviewer-friendly and compresses well into 8 pages.
+It is reviewer-friendly and compresses well under an 8-page limit.
 
 **Finding headers (absorbed from multiple accepted papers).** Each finding may be fronted as a standalone one-clause claim usable as a header: italic thesis at bullet start (“\emph{Graph is the dominant bottleneck.}”), bold run-in paragraph opener, boxed/numbered finding, or even a subsection title. Name the finding, don't brand it: “Task Diversity Matters More than Solution Diversity” states a result; “the Good-gets-Better Principle” is a marketing label.
 
@@ -63,7 +63,7 @@ This is reviewer-friendly and compresses well into 8 pages.
 
 - State the number, then a named concrete instance, then stop: “One exception is Llama-3.1-8B, which has the time-only dual@10 of 0.244, slightly smaller than the space-only dual@10 of 0.248.”
 - A separate plain sentence often helps distinguish an observation from its interpretation. Preserve a clear attached clause when it already serves that relationship; see `paper-voice-contract.md` Category 7. Choose “It demonstrates that …”, “This may be because …”, or “We believe that …” only when the source supports that particular evidence relationship.
-- “significant” is fine only with a number adjacent to it.
+- Use “significant” in its statistical sense only when a test supports it; otherwise report the observed difference and its conditions, following the academic-writing evidence rules.
 
 ## 6) LaTeX conventions
 

@@ -25,6 +25,13 @@ deletions, make those changes and preserve unrelated text. Polishing addresses
 expression; drafting and authorized restructuring allow content selection
 and organization appropriate to the task.
 
+Read approved work for what it keeps, explains, and leaves to the reader,
+as well as for its wording. When the user's edits are available, compare them
+with the original to understand those choices. A survey, a learning note,
+and a paper may need different amounts of explanation. Carry applicable taste
+into the current task without turning one artifact's structure, length, or
+formatting into a universal template.
+
 ## Select the material needed for this task
 
 Read the required material for the applicable domain before doing the work.
@@ -46,14 +53,26 @@ their stated task conditions apply.
 ## Preserve meaning while improving expression
 
 - Polishing retains facts, numbers, reasoning, examples, conditions,
-  comparisons, uncertainty, and useful explanation. Remove empty wording;
+  comparisons, uncertainty, and useful explanation. Remove empty wording and
+  irrelevant commentary about the text itself when the reader loses no
+  meaning needed to understand its claims, evidence, or the author's judgment;
   express vague content more concretely only with facts already supplied.
   Leave sound wording alone. Keep quotations, names, and text discussed as
   examples intact unless the requested operation changes them. Shorter text
   is not the objective.
-- Drafting and authorized restructuring select material for the reader's
-  purpose. Before drafting, restructuring an argument, or interpreting results,
-  match each core claim to its source, comparison conditions, scope, and
+- Drafting and authorized restructuring select and arrange material for the
+  reader's purpose. First decide what the intended reader already knows about
+  this topic and what they need to understand, judge, or do after reading;
+  judge familiarity per topic, not by the reader's role. Build the main line
+  from that purpose, enter from something the reader already recognizes, give
+  central points and unfamiliar mechanisms enough room to be usable, and pass
+  quickly over shared background and features every compared object has.
+  Choose paragraphs, lists, tables, or figures by the relationships in the
+  content. Material supplied so that the writer understands the task does not
+  automatically belong in the text; facts from it that establish the reader's
+  problem do.
+- Before drafting, restructuring an argument, or interpreting results, match
+  each core claim to its source, comparison conditions, scope, and
   substantive counterevidence. Preserve what the reader needs to assess those
   claims. A change to the paper's direction or a result's meaning requires a
   user decision.
@@ -61,8 +80,13 @@ their stated task conditions apply.
   experience, emotion, opinions, and factual claims must come from the source
   or user context. Do not invent them to make prose sound human.
 - Write objects, actions, conditions, and results directly. Position the work
-  positively with its actual scope. Preserve real negative findings; respond
-  to objections only when they exist in reader-visible material.
+  positively with its actual scope. For an explanation, qualification, or
+  comparison, check both what removing it would lose and what keeping it
+  helps the reader understand or decide. Preserve real negative findings and
+  limits that affect a relevant claim. Address questions and ambiguities
+  grounded in the task or material; do not introduce an unasserted claim just
+  to disclaim it. A sentence can be unnecessary even when its wording is
+  factual and impersonal.
 - Preserve citation-to-claim relationships, cross-references, mathematical
   meaning, code, labels, and non-prose environments. In authorized structural
   edits, move citations with the claims they support.
@@ -79,8 +103,12 @@ their stated task conditions apply.
   Explicit narrow additions or deletions preserve unrelated text. Keep revision
   history in the handoff.
 
-Read the result against the input and task. Check the actual information and
-argument, not word counts or pattern scores. Complete the authorized scope
+Read the complete result against the input and task. Check content relevance
+as well as factual and logical preservation, not word counts or pattern scores.
+For drafted or restructured text, also read it as the intended reader: they
+should be able to state the problem it addresses, what matters most, and why
+each part is where it is. Having every planned section present does not
+answer this. Complete the authorized scope
 and deliver the requested prose, file, or diff; return only prose when that
 is what the user asks for. For rendered layout changes, inspect the affected
 pages.
